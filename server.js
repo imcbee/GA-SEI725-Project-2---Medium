@@ -2,11 +2,22 @@
 const express = require('express')
 
 
+// Controller Imports
+//const {post} = require('./controllers');
+const controller = require('./controllers/post_controller')
 
 
 // App Configuration
 const app = express();
 const port = 8080;
+
+// Middleware
+
+
+
+
+
+app.use('/post', controller)
 
 // Home Route
 app.get('/', (req, res) => {
