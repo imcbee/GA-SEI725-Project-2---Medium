@@ -4,13 +4,19 @@ const router = express.Router();
 
 
 // Middleware
+router.use(express.json());
+router.use(express.urlencoded({ extended: false }));
+
+// Model Import
+//const db = require('')
+
 
 // Model Import
 const db = require('../models')
 
 // New Route
 router.get('/new', (req, res) => {
-    res.send('hello')
+    res.render('new.ejs')
 })
 
 // Create Route
