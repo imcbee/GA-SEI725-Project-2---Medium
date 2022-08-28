@@ -5,7 +5,8 @@ const router = express.Router();
 
 // Middleware
 
-
+// Model Import
+const db = require('../models')
 
 // New Route
 router.get('/new', (req, res) => {
