@@ -7,9 +7,6 @@ const router = express.Router();
 router.use(express.json());
 router.use(express.urlencoded({ extended: false }));
 
-// Model Import
-//const db = require('')
-
 
 // Model Import
 const db = require('../models')

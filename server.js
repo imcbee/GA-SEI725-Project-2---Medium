@@ -1,9 +1,10 @@
 // Importing Statments
-const express = require('express')
+const express = require('express');
+const methodOverride = require('method-override');
 
 
 // Controller Imports
-//const {post} = require('./controllers');
+//const {articles, reviews} = require('./controllers');
 const controller = require('./controllers/articles_controller')
 
 
@@ -12,8 +13,9 @@ const app = express();
 const port = 8080;
 
 // Middleware
-//app.use('view engine', 'ejs')
-// app.use(express.static('public'))// 
+app.set('view engine', 'ejs');
+app.use(express.static('public'));
+app.use(methodOverride('_method'));
 app.use('', controller)
 
 
@@ -21,9 +23,9 @@ app.use('', controller)
 
 
 // 404 Route
-// app.get('*', (req, res) => {
-//     res.send('404, not found')
-// })
+app.get('*', (req, res) => {
+    res.render('404.ejs')
+})
 
 
 
