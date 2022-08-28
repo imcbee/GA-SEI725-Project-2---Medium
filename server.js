@@ -12,23 +12,18 @@ const app = express();
 const port = 8080;
 
 // Middleware
+//app.use('view engine', 'ejs')
+// app.use(express.static('public'))// 
+app.use('', controller)
 
 
 
-
-
-app.use('/post', controller)
-
-// Home Route
-app.get('/', (req, res) => {
-    res.send('hello')
-})
 
 
 // 404 Route
-app.get('*', (req, res) => {
-    res.send('404, not found')
-})
+// app.get('*', (req, res) => {
+//     res.send('404, not found')
+// })
 
 
 
