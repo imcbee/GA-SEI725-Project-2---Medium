@@ -7,11 +7,11 @@ const connectionStr = process.env.MONGODB_URL
 const connection = mongoose.connect(connectionStr)
 
 mongoose.connection.on('connected', ()=>console.log(
-    `${new Date().toLocaleTimeString()}: MongoDB connected...`
+    `${new Date().toLocaleTimeString()}: MongoDB connected...✅ ✅ ✅`
 ))
 
 mongoose.connection.on('error', (error)=>console.log(
-    `${new Date().toLocaleTimeString()}: MongoDB error encountered...\n ${{error}}`
+    `${new Date().toLocaleTimeString()}: MongoDB error encountered...❌ ❌ ❌ \n ${{error}}`
 ))
 
 mongoose.connection.on('disconnnected', ()=>console.log(

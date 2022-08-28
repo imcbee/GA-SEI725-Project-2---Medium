@@ -5,6 +5,7 @@ const articleSchema = new mongoose.Schema(
   	author: { type: String, required: true },
   	title: { type: String, required: true },
   	text: {type: String, required: true },
+	publishDate: {type: Date, required: true}
   },
 	{ timestamps: true });
 

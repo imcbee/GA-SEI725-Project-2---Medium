@@ -4,7 +4,7 @@ const express = require('express')
 
 // Controller Imports
 //const {post} = require('./controllers');
-const controller = require('./controllers/post_controller')
+const controller = require('./controllers/articles_controller')
 
 
 // App Configuration
