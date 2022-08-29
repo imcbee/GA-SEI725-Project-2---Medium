@@ -51,18 +51,18 @@ router.get('/:id', (req ,res, next) => {
 
 
 // Index Route
-router.get('/', (req, res, next) => {
-    res.send('hey hey hey')
+router.get('/', async (req, res, next) => {
+    //res.send('hey hey hey')
     
-    // try{
-        // const allArticles = await db.Articles.find({})
-        // const context = {articles: allArticles};
-        // console.log(allArticles)
-        // res.render('index.ejs', context);
-    // }catch(err) {
-    //     console.log(err)
-    //     res.redirect('/404');
-    // }
+    try{
+        const allArticles = await db.Articles.find()
+        const context = {articles: allArticles};
+        console.log(allArticles)
+        res.render("index.ejs", context);
+    }catch(err) {
+        console.log(err)
+        res.redirect('/404');
+    }
 })
 
 

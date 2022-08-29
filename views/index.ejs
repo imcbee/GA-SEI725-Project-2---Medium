@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- head -->
-<%- include ('partials/head.ejs' {page: 'Articles'}) %> 
+    <%-  include('partials/head', {page: articles.title}) %> 
 <body>
-    <%- include ('patials/navbar.ejs') %>
+    <%- include('partials/navbar') %>
 
     <section>
         <div>
@@ -13,13 +13,13 @@
 
     <main class="container">
         <div>
-            <% for( let i = 0; i < Articles.length; i++){ %>
-                <% const firstArticle = article[i] %>
-                <a href="/articles/<%= firstArticle._id %> "><%=firstArticle.title %> </a>
+            <% for( let i = 0; i < articles.length; i++){ %>
+                <% const firstArticle = articles[i] %>
+                <a href="/<%= firstArticle._id %> "><%=firstArticle.title %> </a>
                 <div>
                     <%= firstArticle.text %> 
                 </div>
-                <% } %> 
+                <% }; %> 
         </div>
     </main>
     
