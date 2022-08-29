@@ -37,16 +37,16 @@ router.post('/', (req, res, next) => {
 })
 
 // Show Route
-router.get('/:id', (req ,res, next) => {
-    res.send('howdy')
+router.get('/:id', async (req ,res, next) => {
+    //res.send('howdy')
     
-    // try{
-        // const foundArticle = await db.Articles.findById(req.params.id)
-        // console.log(foundArticle)
-    // }catch(err) {
-    //     console.log(err)
-    //     res.redirect('/404');
-    // }
+    try{
+        const foundArticle = await db.Articles.findById(req.params.id)
+        console.log(foundArticle)
+    }catch(err) {
+        console.log(err)
+        res.redirect('/404');
+    }
 })
 
 
