@@ -42,7 +42,9 @@ router.get('/:id', async (req ,res, next) => {
     
     try{
         const foundArticle = await db.Articles.findById(req.params.id)
+        const context = {articles: foundArticle, id: foundArticle._id}
         console.log(foundArticle)
+        res.render('show.ejs', context)
     }catch(err) {
         console.log(err)
         res.redirect('/404');

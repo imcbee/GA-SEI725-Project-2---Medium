@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- head -->
+    <%-  include('partials/head', {page: articles.title}) %> 
+<body>
+    <%- include('partials/navbar') %>
+
+    <section>
+        <div>
+            <h2 class="title">All Articles</h2>
+        </div>
+    </section>
+
+    <main class="container">
+        <div>
+            <% for( let i = 0; i < articles.length; i++){ %>
+                <% const firstArticle = articles[i] %>
+                <a href="/<%= firstArticle._id %> "><%=firstArticle.title %> </a>
+                <div>
+                    <%= firstArticle.text %> 
+                </div>
+                <% }; %> 
+        </div>
+    </main>
+    
+</body>
+</html>
