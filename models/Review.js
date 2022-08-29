@@ -9,9 +9,9 @@ const reviewSchema = new mongoose.Schema({
     },
     content: {
         type: String, 
-        required: true 
+        required: [true, "Reason for this rating"]
     },
-    ariticles: {
+    articles: {
         type: mongoose.Types.ObjectId,
         ref: 'Article',
     },
@@ -20,6 +20,3 @@ const reviewSchema = new mongoose.Schema({
 const Review = mongoose.model('Review', reviewSchema);
 
 module.exports = Review;
-
-// basically copy pasta from sell it up. makes life a bit easier on us.
-// if you guys wanna change anything feel free to do so. :)
