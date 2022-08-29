@@ -1,6 +1,10 @@
 // Importing Statements
+const express = require('express');
+const router = express.Router()
+const { Review } = require('../models')
 
 // Middleware
+
 
 // Model Import
 
@@ -17,3 +21,7 @@
 // Destroy Route
 
 // Update Route
+
+
+
+module.exports = router;
