@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 
 <!-- Head -->
 <%- include('partials/head') %> 
@@ -7,23 +8,38 @@
 <body>
     <%- include('partials/navbar') %>
 
+=======
+<!-- Head -->
+<%- include('partials/head') %>
+<body>
+    <%- include('partials/navbar') %>
+>>>>>>> 6a0900437d164f75b66a36427f2ee2145c85ca03
     <section>
         <div>
             <h2 class="title">Article: <%=articles.title %> </h2>
         </div>
     </section>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6a0900437d164f75b66a36427f2ee2145c85ca03
     <main class="container">
         <div>
             <small>author: <%=articles.author %> </small>
         </div>
         <div>
             <small>date: <%= articles.publishedDate %> </small>
+<<<<<<< HEAD
 
             <div>
                 <a href="/<%=articles._id%>/edit " >Edit Article</a>
             </div>
 
+=======
+            <div>
+                <a href="/<%=articles._id%>/edit " >Edit Article</a>
+            </div>
+>>>>>>> 6a0900437d164f75b66a36427f2ee2145c85ca03
             <div>
                 <p class="control">
                     <form action="/<%=articles._id%>?_method=DELETE" method="POST">
@@ -35,7 +51,10 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6a0900437d164f75b66a36427f2ee2145c85ca03
     </main>
 </body>
 </html>

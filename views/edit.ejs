@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- head -->
+    <%-  include('partials/head') %> 
+<body>
+    <%- include('partials/navbar') %>
+
+    <form action="/<%= id%>?_method=PUT" method="POST">
+        <label>Product Name</label>
+        <div>
+          <input
+            class="input"
+            type="text"
+            placeholder="product name"
+            name="name"
+            value="<%= product.name %> "
+          />
+        </div>
+      </div>
+      
+      <div>
+        <label>Product Price</label>
+          <input
+            class="input"
+            type="number"
+            placeholder="product price"
+            step="0.01"
+            name="price"
+            value="<%= product.price %>"
+          />
+        </div>
+      </div>
+      
+      <div>
+        <label>Product Image</label>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            placeholder="product image"
+            name="image"
+            value="<%= product.image %> "
+          />
+        </div>
+      </div>
+      
+          <div>
+       <input type="submit" value="Edit Product">
+          </div>
+      </div>
+      </form>
+    
+</body>
+</html>
