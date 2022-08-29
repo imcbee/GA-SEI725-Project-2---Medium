@@ -59,7 +59,7 @@ router.get('/', async (req, res, next) => {
     try{
         const allArticles = await db.Articles.find()
         const context = {articles: allArticles};
-        console.log(allArticles)
+        //console.log(allArticles)
         res.render("index.ejs", context);
     }catch(err) {
         console.log(err)
@@ -69,52 +69,52 @@ router.get('/', async (req, res, next) => {
 
 
 // Destroy Route
-router.delete('/:id', (req, res, next) =>{
-    res.send('delete')
+router.delete('/:id', async (req, res, next) =>{
+    //res.send('delete')
     
-    // try{
-        // const foundArticle = await db.Articles.findByIdAndDelete(req.params.id);
-        // //const deleteReview = await db.Articles.findByIdAndDelete({article: foundArticle._id})
-        // console.log(foundArticle);
-        // return res.redirect('/');
-    // }catch(err) {
-    //     console.log(err)
-    //     res.redirect('/404');
-    // }
+    try{
+        const foundArticle = await db.Articles.findByIdAndDelete(req.params.id);
+        //const deleteReview = await db.Articles.findByIdAndDelete({article: foundArticle._id})
+        console.log(foundArticle);
+        return res.redirect('/');
+    }catch(err) {
+        console.log(err)
+        res.redirect('/404');
+    }
 })
 
 
 // Edit Route
-router.get('/:id/edit', (req, res, next) => {
-    res.send('edit')
+router.get('/:id/edit', async (req, res, next) => {
+    //res.send('edit')
     // const foundArticle = articles[req.params.id];
     // const context = {article: foundArticle, id: req.params.id };
     // res.render('edit.ejs', context)
     
-    // try{
-        // const foundArticle = await db.Articles.findById(req.params.id);
-        // console.log(foundArticle);
-        // //let article = articles[req.params.id];
-        // res.render('edit.ejs', {article: foundArticle, id: foundArticle._id});
-    // }catch(err) {
-    //     console.log(err)
-    //     res.redirect('/404');
-    // }
+    try{
+        const foundArticle = await db.Articles.findById(req.params.id);
+        console.log(foundArticle);
+        //let article = articles[req.params.id];
+        res.render('edit.ejs', {articles: foundArticle, id: foundArticle._id});
+    }catch(err) {
+        console.log(err)
+        res.redirect('/404');
+    }
 })
 
 
 // Update Route
-router.put('/:id', (req, res, next) => {
-    res.send('hi')
+router.put('/:id', async (req, res, next) => {
+    //res.send('hi')
     
-    // try{
-        // const updatedArticle = req.body;
-        // await db.Articles.findByIdAndUpdate(req.params.id, updatedArticle, {new:true})
-        // res.redirect(`/${req.params.id}`);
-    // }catch(err) {
-    //     console.log(err)
-    //     res.redirect('/404');
-    // }
+    try{
+        const updatedArticle = req.body;
+        await db.Articles.findByIdAndUpdate(req.params.id, updatedArticle, {new:true})
+        res.redirect(`/${req.params.id}`);
+    }catch(err) {
+        console.log(err)
+        res.redirect('/404');
+    }
 })
 
 

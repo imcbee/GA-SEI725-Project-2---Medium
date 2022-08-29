@@ -2,53 +2,59 @@
 <html lang="en">
 <!-- head -->
     <%-  include('partials/head') %> 
-<body>
-    <%- include('partials/navbar') %>
+    <body>
+        <%- include('partials/navbar') %>
 
-    <form action="/<%= id%>?_method=PUT" method="POST">
-        <label>Product Name</label>
+        <form action="/<%= id%>?_method=PUT" method="POST">
+            <div>
+                <label>Article Title</label>
+                <input
+                    class="input"
+                    type="text"
+                    placeholder="Article Title"
+                    name="title"
+                    value="<%= articles.title %> "
+                />
+            </div>
+        
+            <div>
+                <label>Article Author</label>
+                <input
+                    class="input"
+                    type="text"
+                    placeholder="Article Author"
+                    name="name"
+                    value="<%= articles.author %> "
+                />
+            </div>
+        
         <div>
-          <input
-            class="input"
-            type="text"
-            placeholder="product name"
-            name="name"
-            value="<%= product.name %> "
-          />
+                <label>Article Image</label>
+                <input
+                    class="input"
+                    type="text"
+                    placeholder="Article Author"
+                    name="url"
+                    value="<%= articles.image %> "
+                />
         </div>
-      </div>
-      
-      <div>
-        <label>Product Price</label>
-          <input
-            class="input"
-            type="number"
-            placeholder="product price"
-            step="0.01"
-            name="price"
-            value="<%= product.price %>"
-          />
+
+        <div>
+                <label>Article Text</label>
+                <input
+                    class="input"
+                    type="text"
+                    placeholder="Article Text"
+                    name="text"
+                    value="<%= articles.text %> "
+                />
         </div>
-      </div>
-      
-      <div>
-        <label>Product Image</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="product image"
-            name="image"
-            value="<%= product.image %> "
-          />
-        </div>
-      </div>
-      
-          <div>
-       <input type="submit" value="Edit Product">
-          </div>
-      </div>
-      </form>
-    
-</body>
+        
+            <div>
+                <input type="submit" value="Edit Article">
+            </div>
+        
+        </form>
+        
+    </body>
 </html>
