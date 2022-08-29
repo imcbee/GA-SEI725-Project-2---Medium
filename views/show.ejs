@@ -22,6 +22,12 @@
 
 
             <div>
+                <%= articles.text%>
+            </div>
+            <div>
+                <img src="<%=articles.image%> " style="max-width: 500px;">
+            </div>
+            <div>
                 <a href="/<%=articles._id%>/edit " >Edit Article</a>
             </div>
 
@@ -35,9 +41,7 @@
                         <input class='button is-danger' type="submit" value="Delete Article"/>
                     </form>
                 </p>
-                <div>
-                    <img src="<%=articles.image%> " style="max-width: 500px;">
-                </div>
+                
             </div>
         </div>
     </main>
