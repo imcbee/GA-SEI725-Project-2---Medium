@@ -2,15 +2,40 @@
 <html lang="en">
 
 <!-- Head -->
-<%- include ('partials/head.ejs', {page: articles.title}) %> 
+<%- include('partials/head') %> 
 
 <body>
-    <%- include ('partials/navbar.ejs') %> 
+    <%- include('partials/navbar') %>
+
+    <section>
+        <div>
+            <h2 class="title">Article: <%=articles.title %> </h2>
+        </div>
+    </section>
 
     <main class="container">
         <div>
-            
+            <small>author: <%=articles.author %> </small>
         </div>
+        <div>
+            <small>date: <%= articles.publishedDate %> </small>
+
+            <div>
+                <a href="/<%=articles._id%>/edit " >Edit Article</a>
+            </div>
+
+            <div>
+                <p class="control">
+                    <form action="/<%=articles._id%>?_method=DELETE" method="POST">
+                        <input class='button is-danger' type="submit" value="Delete Article"/>
+                    </form>
+                </p>
+                <div>
+                    <img src="<%=articles.image%> " style="max-width: 500px;">
+                </div>
+            </div>
+        </div>
+
     </main>
 </body>
 </html>
