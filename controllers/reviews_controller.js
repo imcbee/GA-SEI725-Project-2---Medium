@@ -29,8 +29,8 @@ router.get('/:id/', async (req, res, next) => {
         const articleReview = await db.Reviews.findById(req.params.id)
         const article = await db.Articles.findById(req.params.id)
         const context = {reviews: articleReview, article: article}
-        console.log(articleReview)
-        console.log(article)
+        // console.log(articleReview)
+        // console.log(article)
         res.render('reviews/show.ejs', context)
         
         
@@ -63,8 +63,10 @@ router.get('/:id/edit', async (req, res, next)=>{
     //res.send('oh my my my')
     
     try{
-        const newReview = await db.Reviews.create(req.body)
-        res.redirect(`/reviews/${newReview._id}`)
+        const newReview = await db.Reviews.findById(req.params.id)
+        console.log(req.params.id)
+        console.log(newReview)
+        res.render('reviews/edit.ejs', {reviews: newReview, id: newReview._id});
     }catch(err) {
         console.log(err);
         res.redirect('/404');
@@ -74,7 +76,19 @@ router.get('/:id/edit', async (req, res, next)=>{
 
 
 // Update Route
-
+router.put('/:id', async (req, res, next) => {
+    //res.send('hi')
+    
+    try{
+        const updatedReview = req.body;
+        await db.Reviews.findByIdAndUpdate(req.params.id, updatedReview, {new:true})
+        res.redirect(`/${req.params.id}`);
+    }catch(err) {
+        console.log(err);
+        res.redirect('/404');
+        return next();
+    }
+})
 
 
 module.exports = router;
