@@ -1,3 +1,16 @@
 body{
-    color: purple;
+    color: black;
+    background-color: #e2e2e2;
+}
+
+.like_btn {
+    padding: 10px 15px;
+    background: #0080ff;
+    font-size: 18px;
+    font-family: "Open Sans", sans-serif;
+    border: none;
+    outline: none;
+    color: #e8efff;
+    border-radius: 5px;
+    cursor: pointer;
 }

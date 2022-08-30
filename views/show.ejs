@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- Head -->
-<%- include('partials/head') %>
+<%- include('partials/show-head') %>
 <body>
     <%- include('partials/navbar') %>
     <section>
@@ -15,11 +15,7 @@
             <small>author: <%=articles.author %> </small>
         </div>
         <div>
-            <small>date: <%= articles.publishedDate %> </small>
-
-            <div>
-                <a href="/<%=articles._id%>/edit " >Edit Article</a>
-            </div>
+            <small>date: <%= articles.publishDate %> </small>
 
             <div>
                 <%= articles.text%>
@@ -42,11 +38,15 @@
                         <input class='button is-danger' type="submit" value="Delete Article"/>
                     </form>
                 </p>
-                <div>
-                    <img src="<%=articles.image%> " style="max-width: 500px;">
-                </div>
             </div>
         </div>
+
+        <button class="like_btn">
+            <span id="icon"><i class="fa-regular fa-thumbs-up"></i></i></span>
+            <span id="count">0</span> Like 
+        </button>
+        
     </main>
+
 </body>
 </html>
