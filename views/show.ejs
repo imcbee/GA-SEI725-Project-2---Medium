@@ -10,14 +10,32 @@
         </div>
     </section>
     <main class="container">
+        <!-- Article post -->
         <div>
             <small>author: <%=articles.author %> </small>
         </div>
         <div>
             <small>date: <%= articles.publishedDate %> </small>
+
             <div>
                 <a href="/<%=articles._id%>/edit " >Edit Article</a>
             </div>
+
+            <div>
+                <%= articles.text%>
+            </div>
+            <div>
+                <img src="<%=articles.image%> " style="max-width: 500px;">
+            </div>
+
+        <!-- Comment Section -->
+        
+        <!-- Edit and Delete Section -->
+
+            <div>
+                <a href="/<%=articles._id%>/edit " >Edit Article</a>
+            </div>
+
             <div>
                 <p class="control">
                     <form action="/<%=articles._id%>?_method=DELETE" method="POST">
