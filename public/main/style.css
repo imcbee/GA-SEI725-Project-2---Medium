@@ -107,6 +107,17 @@ hr{
     margin: 0;
 }
 
+.postGrids {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.postGrids.three-col .grid{
+    width: calc(33.33% - 20px); 
+}
+
 .like_btn {
     padding: 10px 15px;
     background: #0080ff;
