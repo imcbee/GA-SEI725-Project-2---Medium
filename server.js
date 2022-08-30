@@ -19,7 +19,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(methodOverride('_method'));
 app.use('', articles);
-app.use('', reviews);
+app.use('/reviews', reviews);
 
 
 

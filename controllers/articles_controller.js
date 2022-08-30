@@ -45,8 +45,8 @@ router.get('/:id', async (req ,res, next) => {
     
     try{
         const foundArticle = await db.Articles.findById(req.params.id)
-        const articleReview = await db.Reviews.find({reviews: foundArticle._id})
-        const context = {articles: foundArticle, id: foundArticle._id}
+        const articleReview = await db.Reviews.find()
+        const context = {articles: foundArticle, id: foundArticle._id, reviews: articleReview}
         console.log(foundArticle)
         res.render('show.ejs', context)
     }catch(err) {

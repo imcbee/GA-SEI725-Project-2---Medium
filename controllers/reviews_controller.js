@@ -15,14 +15,14 @@ const db = require('../models');
 
 // Show Route
     //!  How to show user's list of comments?
-router.get('/:id', async (req, res, next) => {
+router.get('/:id/', async (req, res, next) => {
 
     try{
-        const allReviews = await db.Reviews.find().populate('articles').exec()
-        const allArticles = await db.Articles.find();
+        const articleReview = await db.Reviews.findById()
+        const showArticle = await db.Articles.find();
         const context = {reviews: allReviews, articles: allArticles}
         //! need to render on new page
-        //res.render('reviews/index.ejs', context)
+        res.render('reviews/show.ejs', context)
 
 
     }catch(err){
@@ -31,9 +31,11 @@ router.get('/:id', async (req, res, next) => {
         return next()
     }
 })
-// Edit Route
 
 // Create Route
+
+// Edit Route
+
 
 // Destroy Route
 
