@@ -18,6 +18,9 @@ const port = 8080;
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(methodOverride('_method'));
+
+
+
 app.use('', articles);
 app.use('/reviews', reviews);
 

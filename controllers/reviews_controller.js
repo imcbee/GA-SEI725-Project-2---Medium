@@ -27,8 +27,10 @@ router.get('/:id/', async (req, res, next) => {
 
     try{
         const articleReview = await db.Reviews.findById(req.params.id)
-        const context = {reviews: articleReview}
+        const article = await db.Articles.findById(req.params.id)
+        const context = {reviews: articleReview, article: article}
         console.log(articleReview)
+        console.log(article)
         res.render('reviews/show.ejs', context)
         
         
@@ -42,8 +44,18 @@ router.get('/:id/', async (req, res, next) => {
 // Index Route for User?????
 
 // Destroy Route
-router.delete('', async (req, res, next) => {
-    
+router.delete('/:id', async (req, res, next) => {
+    //res.send('delete review')
+
+    try{
+        //console.log(req.params.id)
+        const foundReview = await db.Reviews.findByIdAndDelete(req.params.id)
+        return res.redirect('/')
+    }catch(err) {
+        console.log(err);
+        res.redirect('/404');
+        return next();
+    }
 })
 
 // Edit Route
