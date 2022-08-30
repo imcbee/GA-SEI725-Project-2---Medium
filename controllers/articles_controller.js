@@ -20,20 +20,23 @@ router.get('/new', (req, res) => {
 })
 
 // Create Route
-router.post('/', (req, res, next) => {
-    res.send('hi')
+router.post('/', async (req, res, next) => {
+    //res.send('hi')
     const createdArticle = req.body
     //articles.push(createdArticle)
 
-    // try{
-        // const newArticle = await db.Articles.create(createdArticle);
-        // console.log(newArticle)
-        // res.redirect('/')
+    try{
+        const newArticle = await db.Articles.create(createdArticle);
+        console.log(newArticle)
+        console.log(req.body)
 
-    // }catch(err) {
-    //     console.log(err)
-    //     res.redirect('/404');
-    // }
+        res.redirect('/')
+
+    }catch(err) {
+        console.log(err);
+        res.redirect('/404');
+        return next();
+    }
 })
 
 // Show Route
@@ -42,12 +45,14 @@ router.get('/:id', async (req ,res, next) => {
     
     try{
         const foundArticle = await db.Articles.findById(req.params.id)
+        const articleReview = await db.Reviews.find({reviews: foundArticle._id})
         const context = {articles: foundArticle, id: foundArticle._id}
         console.log(foundArticle)
         res.render('show.ejs', context)
     }catch(err) {
-        console.log(err)
+        console.log(err);
         res.redirect('/404');
+        return next();
     }
 })
 
@@ -62,8 +67,9 @@ router.get('/', async (req, res, next) => {
         //console.log(allArticles)
         res.render("index.ejs", context);
     }catch(err) {
-        console.log(err)
+        console.log(err);
         res.redirect('/404');
+        return next();
     }
 })
 
@@ -78,8 +84,9 @@ router.delete('/:id', async (req, res, next) =>{
         console.log(foundArticle);
         return res.redirect('/');
     }catch(err) {
-        console.log(err)
+        console.log(err);
         res.redirect('/404');
+        return next();
     }
 })
 
@@ -97,8 +104,9 @@ router.get('/:id/edit', async (req, res, next) => {
         //let article = articles[req.params.id];
         res.render('edit.ejs', {articles: foundArticle, id: foundArticle._id});
     }catch(err) {
-        console.log(err)
+        console.log(err);
         res.redirect('/404');
+        return next();
     }
 })
 
@@ -112,8 +120,9 @@ router.put('/:id', async (req, res, next) => {
         await db.Articles.findByIdAndUpdate(req.params.id, updatedArticle, {new:true})
         res.redirect(`/${req.params.id}`);
     }catch(err) {
-        console.log(err)
+        console.log(err);
         res.redirect('/404');
+        return next();
     }
 })
 
