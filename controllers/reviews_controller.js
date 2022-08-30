@@ -28,7 +28,11 @@ router.post('/:id', async (req, res, next) => {
     
     try{
         
-        const newReview = await db.Reviews.create(req.body);
+        const newReview = await db.Reviews.create({
+            rating: req.body.rating,
+            content: req.body.content,
+            articles: req.params.id
+        });
         console.log(newReview)
         res.redirect(`/${req.params.id}`)
     }catch(err){

@@ -46,8 +46,19 @@ router.get('/:id', async (req ,res, next) => {
     try{
         const foundArticle = await db.Articles.findById(req.params.id)
         const articleReview = await db.Reviews.find()
-        const context = {articles: foundArticle, id: foundArticle._id, reviews: articleReview}
-        //console.log(foundArticle)
+        let specificReview = [];
+        // console.log(req.params.id)
+        // console.log(foundArticle)
+        for(let i =0; i<articleReview.length; i++) {
+            //console.log( foundArticle._id)
+            console.log(articleReview[i])
+            if(articleReview[i].articles.equals(foundArticle._id)  ) {
+                console.log('hi')
+                specificReview.push(articleReview[i]);
+            };
+        };
+        const context = {articles: foundArticle, id: foundArticle._id, reviews: specificReview}
+        //console.log(articleReview)
         res.render('show.ejs', context)
     }catch(err) {
         console.log(err);
