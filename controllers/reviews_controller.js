@@ -12,13 +12,31 @@ router.use(express.urlencoded({ extended: false }));
 const db = require('../models');
 
 // New Route
-router.get('/new', async (req, res, next) => {
-    res.send('yo yo yo')
+// router.get(`/new`, async (req, res, next) => {
+//     const article = await db.Articles.findById(req.params.id)
+//     console.log(req.params.id)
+//     console.log(article)
+//     // const connect = {reviews: }
+//     res.send('yo yo yo')
+//     // res.render('reviews/new.ejs')
 
 
-})
+// })
+
 // Create Route
-
+router.post('/:id', async (req, res, next) => {
+    
+    try{
+        
+        const newReview = await db.Reviews.create(req.body);
+        console.log(newReview)
+        res.redirect(`/${req.params.id}`)
+    }catch(err){
+        console.log(err);
+        res.redirect('/404')
+        return next()
+    }
+})
 
 // Show Route
 //!  How to show user's list of comments?
@@ -29,6 +47,8 @@ router.get('/:id/', async (req, res, next) => {
         const articleReview = await db.Reviews.findById(req.params.id)
         const article = await db.Articles.findById(req.params.id)
         const context = {reviews: articleReview, article: article}
+
+        
         // console.log(articleReview)
         // console.log(article)
         res.render('reviews/show.ejs', context)
@@ -82,7 +102,7 @@ router.put('/:id', async (req, res, next) => {
     try{
         const updatedReview = req.body;
         await db.Reviews.findByIdAndUpdate(req.params.id, updatedReview, {new:true})
-        res.redirect(`/${req.params.id}`);
+        res.redirect(`/reviews/${req.params.id}`);
     }catch(err) {
         console.log(err);
         res.redirect('/404');
