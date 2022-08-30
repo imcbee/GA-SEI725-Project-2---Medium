@@ -27,8 +27,8 @@ router.post('/', async (req, res, next) => {
 
     try{
         const newArticle = await db.Articles.create(createdArticle);
-        console.log(newArticle)
-        console.log(req.body)
+        //console.log(newArticle)
+        //console.log(req.body)
 
         res.redirect('/')
 
@@ -45,9 +45,9 @@ router.get('/:id', async (req ,res, next) => {
     
     try{
         const foundArticle = await db.Articles.findById(req.params.id)
-        const articleReview = await db.Reviews.find({reviews: foundArticle._id})
-        const context = {articles: foundArticle, id: foundArticle._id}
-        console.log(foundArticle)
+        const articleReview = await db.Reviews.find()
+        const context = {articles: foundArticle, id: foundArticle._id, reviews: articleReview}
+        //console.log(foundArticle)
         res.render('show.ejs', context)
     }catch(err) {
         console.log(err);
@@ -81,7 +81,7 @@ router.delete('/:id', async (req, res, next) =>{
     try{
         const foundArticle = await db.Articles.findByIdAndDelete(req.params.id);
         //const deleteReview = await db.Articles.findByIdAndDelete({article: foundArticle._id})
-        console.log(foundArticle);
+        //console.log(foundArticle);
         return res.redirect('/');
     }catch(err) {
         console.log(err);
@@ -100,7 +100,7 @@ router.get('/:id/edit', async (req, res, next) => {
     
     try{
         const foundArticle = await db.Articles.findById(req.params.id);
-        console.log(foundArticle);
+        //console.log(foundArticle);
         //let article = articles[req.params.id];
         res.render('edit.ejs', {articles: foundArticle, id: foundArticle._id});
     }catch(err) {
