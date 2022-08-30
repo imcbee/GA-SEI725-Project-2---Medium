@@ -6,8 +6,8 @@ const MongoStore = require('connect-mongo');
 
 
 // Controller Imports
-//const {articles, reviews} = require('./controllers');
-const controller = require('./controllers/articles_controller')
+const {articles, reviews} = require('./controllers');
+//const controller = require('./controllers/articles_controller')
 
 
 // App Configuration
@@ -18,7 +18,11 @@ const port = 8080;
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(methodOverride('_method'));
-app.use('', controller)
+
+
+
+app.use('', articles);
+app.use('/reviews', reviews);
 
 
 
