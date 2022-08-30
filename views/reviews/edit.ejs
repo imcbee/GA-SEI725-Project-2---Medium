@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- head -->
+    <%-  include('../partials/head') %> 
+    <body>
+        <%- include('../partials/navbar') %>
+
+        <form action="/reviews/<%= reviews._id%>?_method=PUT" method="POST">
+            <div>
+                <label>Comment Rating</label>
+                <input class="input" type="number" placeholder="0-5" name="rating" value="<%= reviews.rating %> "/>
+            </div>
+            <div>
+                <label>Comment Text</label>
+                <textarea name="content" id="content" cols="30" rows="10" placeholder="Write Comment here"></textarea>
+                
+            </div>      
+            
+            <div>
+                <input type="submit" value="Edit Comment">
+            </div>
+        
+        </form>
+        
+    </body>
+</html>
