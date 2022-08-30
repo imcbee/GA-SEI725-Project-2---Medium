@@ -37,16 +37,14 @@
                     <h3>Rating : <%= element.rating%></h3>
                 </div>
                 <div class="comment-section">
-                    <p>Rating : <%= element.content%></p>
+                    <p>Comment : <a href="/reviews/<%= element._id%>"><%= element.content%></a></p>
                 </div>
-                <div class="edit-comment">
-                    <a href="/<%= articles._id%>/reviews<%= element._id%>/edit">Edit Comment</a>
-                </div>
+                
             </div>
         <% });%>
 
         <div>
-            <a href="/<%=articles._id%>/reviews " >Comments</a>
+            <a href="/<%=articles._id%>/reviews " >Add A Comment</a>
         </div>
         
         <!-- Edit and Delete Section -->

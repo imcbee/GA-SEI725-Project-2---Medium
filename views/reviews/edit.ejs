@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- head -->
+    <%-  include('partials/head') %> 
+    <body>
+        <%- include('partials/navbar') %>
+
+        <form action="/<%= articles._id%>?_method=PUT" method="POST">
+            <div>
+                <label>Article Title</label>
+                <input class="input" type="text" placeholder="Article Title" name="title" value="<%= articles.title %> "/>
+            </div>
+        
+            <div>
+                <label>Article Author</label>
+                <input class="input" type="text" placeholder="Article Author" name="name" value="<%= articles.author %> "/>
+            </div>
+        
+            <div>
+                    <label>Article Image</label>
+                    <input class="input" type="text" placeholder="Article Author" name="url" value="<%= articles.image %> "/>
+            </div>
+
+            <div>
+                    <label>Article Text</label>
+                    <textarea name="text" id="text" cols="100" rows="50"></textarea>
+            </div>
+            
+            <div>
+                <input type="submit" value="Edit Article">
+            </div>
+        
+        </form>
+        
+    </body>
+</html>

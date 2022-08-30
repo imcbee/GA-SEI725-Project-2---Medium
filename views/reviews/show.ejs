@@ -2,53 +2,31 @@
 <html lang="en">
 
 <!-- Head -->
-<%- include('partials/head') %> 
+<%- include('../partials/head') %> 
 
 <body>
-    <%- include('partials/navbar') %>
+    <%- include('../partials/navbar') %>
 
-    <section>
-        <div>
-            <h2 class="title">Article: <%=articles.title %> </h2>
-        </div>
-    </section>
-
-    <main class="container">
-        <!-- Article post -->
-        <div>
-            <small>author: <%=articles.author %> </small>
-        </div>
-        <div>
-            <small>date: <%= articles.publishedDate %> </small>
+    <% reviews%>
+    <div class="comment-rating">
+        <h2>Rating: <%=reviews.rating %> </h2>
+    </div>
 
 
-            <div>
-                <%= articles.text%>
-            </div>
-            <div>
-                <img src="<%=articles.image%> " style="max-width: 500px;">
-            </div>
+    <div class="comment-content">
+        <h2>Comment:</h2>
+        <p>Comment: <%=reviews.content %> </p>
+    </div>
 
-        <!-- Comment Section -->
-        <div>
-            <a href="/<%=articles._id%>/reviews " >Comments</a>
-        </div>
+    <div class="delete-container">
+            <form action="/<%=reviews._id%>?_method=DELETE" method="POST">
+                <input class='button is-danger' type="submit" value="Delete Review"/>
+            </form>
         
-        <!-- Edit and Delete Section -->
+    </div>
 
-        <div>
-            <a href="/<%=articles._id%>/edit " >Edit Article</a>
-        </div>
 
-        <div>
-            <p class="control">
-                <form action="/<%=articles._id%>?_method=DELETE" method="POST">
-                    <input class='button is-danger' type="submit" value="Delete Article"/>
-                </form>
-            </p>
-            
-        </div>
-        </div>
-    </main>
+    
+    
 </body>
 </html>
