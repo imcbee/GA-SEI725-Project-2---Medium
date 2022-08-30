@@ -64,6 +64,7 @@ span h1 {
 
 .logoArea{
     display: flex;
+
 }
 
 .heroBanner {
@@ -79,7 +80,7 @@ span h1 {
 }
 
 .herotitle {
-    font-size: 90px;
+    font-size: 120px;
     line-height: 1;
 }
 
