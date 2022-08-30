@@ -10,7 +10,7 @@ nav {
     overflow: hidden;
     display: flex;
     align-self: flex-end;
-    justify-content: start;
+    justify-content: space-between;
 }
 
 nav ul{
@@ -35,7 +35,7 @@ nav ul li a {
     text-decoration: none;
 }
 
-.cta-btn{
+.button{
     background-color: black;
     color: white;
     border: none;
@@ -56,4 +56,8 @@ svg {
 
 span h1 {
     font-size: 40px;
+}
+
+.logoArea{
+    display: flex;
 }
