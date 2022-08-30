@@ -5,7 +5,7 @@ body{
 }
 
 nav {
-    background: orange;
+    background: #FFC017;
     margin: 0;
     overflow: hidden;
     display: flex;
@@ -34,7 +34,7 @@ nav ul li a {
     color: black;
     display: block;
     line-height: 3em;
-    padding: 1em 3em;
+    padding: 1em 1em;
     text-decoration: none;
 }
 
@@ -53,12 +53,13 @@ nav ul li a {
 
 svg {
     width: 90px; ;
-    height: 84px;
+    height: 110px;
     padding: 1em;
 }
 
 span h1 {
-    font-size: 40px;
+    font-size: 30px;
+    padding-top: 30px;
 }
 
 .logoArea{
@@ -66,8 +67,8 @@ span h1 {
 }
 
 .heroBanner {
-    background: orange;
-    min-height: 270px;
+    background: #FFC017;
+    min-height: 285px;
     padding: 100px 0;
 }
 
@@ -99,8 +100,8 @@ span h1 {
     text-decoration: none;
 }
 
-hr {
-    margin: 0;
+hr{
+    border: 1px solid black;
     padding: 0;
-    color: #000;
+    margin: 0;
 }
