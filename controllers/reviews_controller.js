@@ -11,17 +11,7 @@ router.use(express.urlencoded({ extended: false }));
 // Model Import
 const db = require('../models');
 
-// New Route
-// router.get(`/new`, async (req, res, next) => {
-//     const article = await db.Articles.findById(req.params.id)
-//     console.log(req.params.id)
-//     console.log(article)
-//     // const connect = {reviews: }
-//     res.send('yo yo yo')
-//     // res.render('reviews/new.ejs')
 
-
-// })
 
 // Create Route
 router.post('/:id', async (req, res, next) => {
@@ -33,7 +23,7 @@ router.post('/:id', async (req, res, next) => {
             content: req.body.content,
             articles: req.params.id
         });
-        console.log(newReview)
+        //console.log(newReview)
         res.redirect(`/${req.params.id}`)
     }catch(err){
         console.log(err);
@@ -88,8 +78,8 @@ router.get('/:id/edit', async (req, res, next)=>{
     
     try{
         const newReview = await db.Reviews.findById(req.params.id)
-        console.log(req.params.id)
-        console.log(newReview)
+        // console.log(req.params.id)
+        // console.log(newReview)
         res.render('reviews/edit.ejs', {reviews: newReview, id: newReview._id});
     }catch(err) {
         console.log(err);

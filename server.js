@@ -20,22 +20,22 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(methodOverride('_method'));
 
-// app.use(
-//     session({
-//         store: MongoStore.create({ mongoURL: process.env.MONGODB_URL }),
-//         secret: 'super secret',
-//         resave: false,
-//         saveUninitialized: false,
-//         cookie: {
-//             maxAge: 1000 * 60 * 60 * 24 * 7 * 2
-//         },
-//     })
-// );
+app.use(
+    session({
+        store: MongoStore.create({ mongoUrl: process.env.MONGODB_URL }),
+        secret: 'super secret',
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            maxAge: 1000 * 60 * 60 * 24 * 7 * 2
+        },
+    })
+);
 
 
 app.use('', articles);
 app.use('/reviews', reviews);
-app.use('', user);
+app.use('/user', user);
 
 
 
