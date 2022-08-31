@@ -124,9 +124,7 @@ hr{
     display: flex;
 }
 
-.title{
-    padding: 30px 20px;
-}
+
 .postTitle{
     font-size: 20px;
     font-weight: bold;
