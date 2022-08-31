@@ -16,6 +16,14 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true,
     }, 
+    reviews: { 
+        type: mongoose.Types.ObjectId, 
+        ref: 'Review' 
+    },
+    articles: {
+        type: mongoose.Types.ObjectId,
+        ref: 'Article'
+    },
 }, { timestamps: true });
 
 const User = mongoose.model('User', userSchema);
