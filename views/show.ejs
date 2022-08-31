@@ -56,20 +56,20 @@
                   <textarea class="form-content" name="content" id="content" cols="30" rows="10"placeholder="Write your comment here"></textarea>
                 </div>
       
-                <button type="submit" class="button is-info">Create Comment</button>
+                <button type="submit" class="btn-sec">Submit comment</button>
             </form>
         </div>
         
         <!-- Comment Section -->
 
-        <h3>Comments Section:</h3>
+        <!-- <h3>Comments Section:</h3> -->
         <% reviews.forEach((element, idx) => {%>
             <div class="comments-container">
                 <div class="comment-rating">
                     <h3>Rating : <%= element.rating%></h3>
                 </div>
                 <div class="comment-section">
-                    <p>Comment : <a href="/reviews/<%= element._id%>"><%= element.content%></a></p>
+                    <p> <a href="/reviews/<%= element._id%>"><%= element.content%></a></p>
                 </div>
                 
 
