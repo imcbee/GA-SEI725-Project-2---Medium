@@ -162,13 +162,14 @@ img{
 }
 
 .postHeader {
-    padding: 30px 20px; 
+    padding: 30px 20px;
 }
 .postMeta,
 .authorBox {
     display: flex; 
     align-items: center;
     justify-content:space-between;
+    font-size: 20px;
 }
 .postHeader
 .authorImage img{
@@ -182,6 +183,18 @@ img{
     gap: 15px; 
 }
 
+.title{
+    font-size: 3em;
+}
+.articles{
+    font-size: 1.5em;
+    line-height: 1.8;
+}
+/* comment box */
+
+.comments-container{
+    background-color: red;
+}
 .like_btn {
     padding: 10px 15px;
     background: #0080ff;

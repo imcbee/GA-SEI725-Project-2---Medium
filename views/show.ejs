@@ -34,7 +34,7 @@
                      <div class="featuredImage"> 
                          <img src="<%=articles.image%>" style="max-width: 500px;">
                      </div>
-                     <%= articles.text%>
+                     <div class="articles"><%= articles.text%>
                     </div>
                  </article>
 
@@ -45,7 +45,7 @@
 
             
 
-        <h2>Comments Section</h2>
+        <!-- <h2>Comments Section</h2> -->
         <% reviews.forEach((element, idx) => {%>
             <div class="comments-container">
                 <div class="comment-rating">
@@ -62,7 +62,7 @@
 
             <!-- Form for new comment -->
         <div>
-            <h3>Write your comments here!</h3>
+            <h3>Write your comments below:</h3>
             <form action="/reviews/<%= articles._id%>" method="POST">
                 <div>
                   <label for="rating">Comment Rating</label>
