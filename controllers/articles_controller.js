@@ -4,11 +4,9 @@ const { articles } = require('.');
 const router = express.Router();
 //require('../config/db.connection')
 
-
 // Middleware
 router.use(express.json());
 router.use(express.urlencoded({ extended: false }));
-
 
 // Model Import
 //const articles = require('../models/tempDB')
@@ -65,7 +63,6 @@ router.get('/:id', async (req ,res, next) => {
     }
 })
 
-
 // Index Route
 router.get('/', async (req, res, next) => {
     //res.send('hey hey hey')
@@ -82,7 +79,6 @@ router.get('/', async (req, res, next) => {
     }
 })
 
-
 // Destroy Route
 router.delete('/:id', async (req, res, next) =>{
     //res.send('delete')
@@ -98,7 +94,6 @@ router.delete('/:id', async (req, res, next) =>{
         return next();
     }
 })
-
 
 // Edit Route
 router.get('/:id/edit', async (req, res, next) => {
@@ -119,7 +114,6 @@ router.get('/:id/edit', async (req, res, next) => {
     }
 })
 
-
 // Update Route
 router.put('/:id', async (req, res, next) => {
     //res.send('hi')
@@ -134,8 +128,5 @@ router.put('/:id', async (req, res, next) => {
         return next();
     }
 })
-
-
-
 
 module.exports = router;

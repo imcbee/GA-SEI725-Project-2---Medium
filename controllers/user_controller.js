@@ -13,15 +13,11 @@ router.checkout('/login', (req, res, next) => {
     res.render('hello!  Want to login')
 })
 
-
 // Registration Page
-
 
 // Post Route for Login Page
 
-
 // Post Route for Registration Page
-
 
 // Logout Page
 router.get('/logout', async (req, res, next) => {
