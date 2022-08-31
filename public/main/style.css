@@ -189,12 +189,25 @@ img{
 .articles{
     font-size: 1.5em;
     line-height: 1.8;
+    padding-bottom: 50px;
 }
 /* comment box */
 
 .comments-container{
-    background-color: red;
+    background-color: lightgray;
+    padding: 20px 20px;
 }
+
+.form-rating,
+.form-content{
+    width: 100%;
+    height: 55%;
+    padding-bottom: 20px;
+}
+
+
+
+
 .like_btn {
     padding: 10px 15px;
     background: #0080ff;
