@@ -7,10 +7,10 @@ const articleSchema = new mongoose.Schema(
   	text: {type: String, required: true },
 	publishDate: {type: Date, required: true},
 	image: { type: String },
-	reviews: { 
-		type: mongoose.Types.ObjectId, 
-		ref: 'Review' 
-	},
+	// reviews: { 
+	// 	type: mongoose.Types.ObjectId, 
+	// 	ref: 'Review' 
+	// },  //! with a many to many, you would have to create another model having an article belonging to a review
 	user: { 
 		type: mongoose.Types.ObjectId,
 		ref: 'User'
