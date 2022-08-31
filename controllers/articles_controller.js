@@ -46,7 +46,7 @@ router.get('/:id', async (req ,res, next) => {
     try{
         const foundArticle = await db.Articles.findById(req.params.id)
         const articleReview = await db.Reviews.find()
-        //const articleReview = await db.Reviews.findById(req.params.id).populate("reviews").exec()
+        //const articleReview = await db.Reviews.findById(req.params.id).populate("articles").exec()
         let specificReview = [];  //! don't need this after refactor
         for(let i =0; i<articleReview.length; i++) {  //! don't need this for loop and conditional after refactoring
             console.log(articleReview[i])
