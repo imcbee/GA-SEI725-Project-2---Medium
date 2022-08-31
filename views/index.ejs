@@ -23,13 +23,13 @@
 
     <main class="container">
         <div>
-            <% for( let i = 0; i < articles.length; i++){ %>
-                <% const firstArticle = articles[i] %>
-                <a href="/<%= firstArticle._id %> "><%=firstArticle.title %> </a>
+            <% articles.forEach((element, idx) => { %>
+                <a href="/<%= element._id %> "><%=element.title %> </a>
                 <div>
-                    <%= firstArticle.text %> 
+                    <%= element.text %> 
                 </div>
-                <% }; %> 
+            <% });%>
+            
         </div>
     </main>
     
