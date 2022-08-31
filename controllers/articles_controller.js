@@ -46,8 +46,17 @@ router.get('/:id', async (req ,res, next) => {
     try{
         const foundArticle = await db.Articles.findById(req.params.id)
         const articleReview = await db.Reviews.find()
-        const context = {articles: foundArticle, id: foundArticle._id, reviews: articleReview}
-        //console.log(foundArticle)
+        //const articleReview = await db.Reviews.findById(req.params.id).populate("articles").exec()
+        let specificReview = [];  //! don't need this after refactor
+        for(let i =0; i<articleReview.length; i++) {  //! don't need this for loop and conditional after refactoring
+            console.log(articleReview[i])
+            if(articleReview[i].articles.equals(foundArticle._id)  ) {
+                console.log('hi')
+                specificReview.push(articleReview[i]);
+            };
+        };
+        const context = {articles: foundArticle, id: foundArticle._id, reviews: specificReview}  //! change to reviews: articleReview
+        //console.log(articleReview)
         res.render('show.ejs', context)
     }catch(err) {
         console.log(err);
