@@ -6,27 +6,37 @@
 
 <body>
     <%- include('partials/navbar') %>
+    <main class="container mainContent">
 
-    <section>
-        <div>
-            <h2 class="title">Article: <%=articles.title %> </h2>
-        </div>
-    </section>
-    
-    <main class="container">
-        <!-- Article post -->
-        <div>
-            <small>author: <%=articles.author %> </small>
-        </div>
-        <div>
-            <small>date: <%= articles.publishDate %> </small>
-
-            <div>
-                <%= articles.text%>
-            </div>
-            <div>
-                <img src="<%=articles.image%> " style="max-width: 500px;">
-            </div>
+        <section class="contentArea">
+            <div class="postHeader"> 
+                <div class="postMeta"> 
+                    <div class="authorBox">
+                        <div class="authorImage"><img src="<%=articles.image%>" alt=""></div>
+                        <div class="ahuthorData"><small>Author: <%=articles.author %> </small> <br>
+                            <!-- <small>date: <%= articles.publishDate.toLocaleDateString('en-US') %> </small> -->
+                            <small>Date: <%= articles.publishDate %> </small>    
+                        </div>
+                    </div>
+                    <!-- <div class="socialShare"> 
+                        <ul class="socialShareList">
+                            <li><a href="">FB</a></li>
+                            <li><a href="">TW</a></li>
+                            <li><a href="">IN</a></li>
+                            <li><a href="">Link</a></li>
+                        </ul>
+                    </div> -->
+                </div>
+                <article>
+                
+                    <h2 class="title"><%=articles.title %> </h2>
+                    <div class="postContent"> 
+                     <div class="featuredImage"> 
+                         <img src="<%=articles.image%>" style="max-width: 500px;">
+                     </div>
+                     <%= articles.text%>
+                    </div>
+                 </article>
 
         <!-- Comment Section -->
 

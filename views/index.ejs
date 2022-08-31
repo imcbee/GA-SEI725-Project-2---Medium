@@ -15,8 +15,8 @@
     <hr>
      
     
-    <section>
-        <div class="container">
+    <section class="container">
+        <div class="">
             <h2 class="title">All Articles</h2>
         </div>
         <div class="postGrids three-col">
@@ -32,7 +32,7 @@
                     <div class="postTitle">
                         <a href="<%= firstArticle._id %> "><%=firstArticle.title %> </a>
                     </div>
-                    <div class="postMeta"><span class="date"><%= (new Date(firstArticle.publishDate)). toLocaleDateString('en-US') %> </span>16 min read</div>
+                    <div class="postMeta"><span class="date"><%= (new Date(firstArticle.publishDate)). toLocaleDateString('en-US') %> </span> ▪ 16 min read</div>
                 </div>
 
             </div>
@@ -40,7 +40,7 @@
         </div>
     </section>
 
-    <main class="container">
+    <!-- <main class="container">
         <div>
             <% for( let i = 0; i < articles.length; i++){ %>
                 <% const firstArticle = articles[i] %>
@@ -50,7 +50,7 @@
                 </div>
                 <% }; %> 
         </div>
-    </main>
+    </main> -->
     
 </body>
 </html>

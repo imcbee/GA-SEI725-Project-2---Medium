@@ -10,7 +10,7 @@ nav {
     overflow: hidden;
     display: flex;
     align-self: flex-end;
-    justify-content: space-between;
+    justify-content: space-between; 
     /* used this to avoid using container class */
     padding-left: 320px;
     padding-right: 320px;
@@ -112,10 +112,76 @@ hr{
     flex-wrap: wrap;
     gap: 20px;
     justify-content: space-between;
+    padding-top: 50px;
+    padding-bottom: 25px;
 }
 
 .postGrids.three-col .grid{
     width: calc(33.33% - 20px); 
+}
+
+.postGrids .grid{
+    display: flex;
+}
+
+.title{
+    padding: 30px 20px;
+}
+.postTitle{
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+
+/* Single Post Design  */
+
+img{
+    max-width: 100%;
+
+}
+.featuredImage img {
+    width: 100%; 
+}
+
+.featuredImage  {
+    margin-bottom: 20px;
+}
+
+
+.socialShareList {
+    list-style: none;
+    margin: 0; 
+    padding: 0; 
+    display: flex;
+    gap: 5px; 
+}
+
+.socialShareList a {
+    list-style: none; 
+    padding: 5px;
+    text-decoration: none; 
+    color: #000;
+}
+
+.postHeader {
+    padding: 30px 20px; 
+}
+.postMeta,
+.authorBox {
+    display: flex; 
+    align-items: center;
+    justify-content:space-between;
+}
+.postHeader
+.authorImage img{
+    height: 50px; 
+    width: 50px; 
+    border-radius: 50%; 
+    object-position: center center; 
+    object-fit: cover;
+}
+.authorBox {
+    gap: 15px; 
 }
 
 .like_btn {
