@@ -7,9 +7,9 @@ const { Review } = require('../models')
 router.use(express.json());
 router.use(express.urlencoded({ extended: false }));
 
-
 // Model Import
 const db = require('../models');
+
 
 
 
@@ -88,7 +88,6 @@ router.get('/:id/edit', async (req, res, next)=>{
     }
 })
 
-
 // Update Route
 router.put('/:id', async (req, res, next) => {
     //res.send('hi')
@@ -103,6 +102,5 @@ router.put('/:id', async (req, res, next) => {
         return next();
     }
 })
-
 
 module.exports = router;

@@ -5,11 +5,9 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo');
 require('dotenv').config();
 
-
 // Controller Imports
 const {articles, reviews, user} = require('./controllers');
 //const controller = require('./controllers/articles_controller')
-
 
 // App Configuration
 const app = express();
@@ -32,22 +30,14 @@ app.use(
     })
 );
 
-
 app.use('', articles);
 app.use('/reviews', reviews);
 app.use('/user', user);
-
-
-
-
 
 // 404 Route
 app.get('*', (req, res) => {
     res.render('404.ejs')
 })
-
-
-
 
 // SERVER
 app.listen(port, () => {

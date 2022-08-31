@@ -14,7 +14,6 @@ router.get('/login', (req, res, next) => {
     res.render('user/login.ejs')
 });
 
-
 // Registration Page
 router.get('/register', (req, res, next) => {
     res.render('user/register.ejs')

@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Head -->
-<%- include('partials/show-head') %>
+    <%- include('partials/show-head') %>
 
 <body>
-    <%- include('partials/navbar') %>
 
+    <%- include('partials/navbar') %>
 
     <section>
         <div>
@@ -15,25 +14,21 @@
     </section>
     
     <main class="container">
-        <!-- Article post -->
+        
         <div>
             <small>author: <%=articles.author %> </small>
         </div>
+
         <div>
             <small>date: <%= articles.publishDate %> </small>
 
             <div>
                 <%= articles.text%>
             </div>
+
             <div>
                 <img src="<%=articles.image%> " style="max-width: 500px;">
             </div>
-
-        <!-- Comment Section -->
-
-        
-        <!-- Edit and Delete Section -->
-
 
         <h2>Comments Section</h2>
         <% reviews.forEach((element, idx) => {%>
@@ -45,12 +40,9 @@
                     <p>Comment : <a href="/reviews/<%= element._id%>"><%= element.content%></a></p>
                 </div>
                 
-
             </div>
         <% });%>
 
-
-            <!-- Form for new comment -->
         <div>
             <h3>Write your comments here!</h3>
             <form action="/reviews/<%= articles._id%>" method="POST">
@@ -67,10 +59,6 @@
                 <button type="submit" class="button is-info">Create Comment</button>
               </form>
         </div>
-        
-       
-       
-        <!-- Edit and Delete Section -->
 
         <div>
             <a href="/<%=articles._id%>/edit " >Edit Article</a>
@@ -84,13 +72,11 @@
             </p>
             
         </div>
-        </div>
 
         <button class="like_btn">
             <span id="icon"><i class="fa-regular fa-thumbs-up"></i></i></span>
             <span id="count">0</span> Like 
         </button>
-        
     </main>
 
 </body>
