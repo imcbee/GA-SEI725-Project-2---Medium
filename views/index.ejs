@@ -3,7 +3,11 @@
 <!-- head -->
     <%-  include('partials/head', {page: articles.title}) %> 
 <body>
-    <%- include('partials/navbar') %>
+    <% if(username) {%>
+        <%- include('./partials/auth-navbar', {user: username}) %>
+        <%}else { %>
+            <%- include('./partials/navbar') %>
+        <%} %>
     <hr>
     <section class="heroBanner"> 
         <div class="container"> 
@@ -13,6 +17,8 @@
         </div>
     </section>
     <hr>
+
+  
      
     <section>
         <div class="container">

@@ -8,7 +8,12 @@
         <!-- <button class="cta-btn" type="button">Register</button> -->
         <a class="button" href="/user/register">Register</a>
        
-       
+        <div class="navbar-menu navbar-end">
+            <% if (user) { %>
+                <p class="navbar-item"><%= user %></p>
+            <% } %>
+            
+        </div>
     </ul>
 
 </nav>

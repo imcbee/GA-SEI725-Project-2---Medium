@@ -40,7 +40,7 @@ router.get('/:id/', async (req, res, next) => {
     try{
         const articleReview = await db.Reviews.findById(req.params.id)
         const article = await db.Articles.findById(req.params.id)
-        const context = {reviews: articleReview, article: article}
+        const context = {reviews: articleReview, article: article, username: req.session.currentUser.username}
 
         
         // console.log(articleReview)
@@ -80,7 +80,7 @@ router.get('/:id/edit', async (req, res, next)=>{
         const newReview = await db.Reviews.findById(req.params.id)
         // console.log(req.params.id)
         // console.log(newReview)
-        res.render('reviews/edit.ejs', {reviews: newReview, id: newReview._id});
+        res.render('reviews/edit.ejs', {reviews: newReview, id: newReview._id, username: req.session.currentUser.username});
     }catch(err) {
         console.log(err);
         res.redirect('/404');

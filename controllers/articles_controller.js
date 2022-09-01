@@ -14,7 +14,8 @@ const db = require('../models')
 
 // New Route
 router.get('/new', (req, res) => {
-    res.render('new.ejs')
+    const context = {username: req.session.currentUser.username}
+    res.render('new.ejs', context)
 })
 
 // Create Route
@@ -56,7 +57,10 @@ router.get('/:id', async (req ,res, next) => {
         //     };
         // };
         // console.log(articleReview)
-        const context = {articles: foundArticle, id: foundArticle._id, reviews: articleReview}  //! change to reviews: articleReview
+        // console.log(`user:  ${req.user}`)
+        // console.log(`userSession:  ${req.session.currentUser.username}`)
+        const context = {articles: foundArticle, id: foundArticle._id, reviews: articleReview, username: req.session.currentUser.username}
+      //! change to reviews: articleReview
         //console.log(articleReview)
         res.render('show.ejs', context)
     }catch(err) {
@@ -72,7 +76,12 @@ router.get('/', async (req, res, next) => {
     
     try{
         const allArticles = await db.Articles.find()
-        const context = {articles: allArticles};
+        const userSession = await db.User.find()
+        //const userSession = req.session.currentUser
+        //console.log(req.session.currentUser)
+        //console.log(req.currentUser)
+        //console.log(userSession)
+        const context = {articles: allArticles, username: req.session.currentUser.username};
         //console.log(allArticles)
         res.render("index.ejs", context);
     }catch(err) {
@@ -109,7 +118,7 @@ router.get('/:id/edit', async (req, res, next) => {
         const foundArticle = await db.Articles.findById(req.params.id);
         //console.log(foundArticle);
         //let article = articles[req.params.id];
-        res.render('edit.ejs', {articles: foundArticle, id: foundArticle._id});
+        res.render('edit.ejs', {articles: foundArticle, id: foundArticle._id, username: req.session.currentUser.username});
     }catch(err) {
         console.log(err);
         res.redirect('/404');
