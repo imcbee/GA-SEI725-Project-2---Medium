@@ -10,13 +10,17 @@ router.use(express.json());
 router.use(express.urlencoded({ extended: false }));
 
 // Login Page
-router.get('/login', (req, res, next) => {
-    res.render('user/login.ejs')
+router.get('/login', async (req, res, next) => {
+    const userSession = await db.User.find(req.session.currentUser);
+    const context = {user: userSession, routes: res.locals.routes}
+    res.render('user/login.ejs', context)
 });
 
 // Registration Page
-router.get('/register', (req, res, next) => {
-    res.render('user/register.ejs')
+router.get('/register', async (req, res, next) => {
+    const userSession = await db.User.find(req.session.currentUser);
+    const context = {user: userSession, routes: res.locals.routes}
+    res.render('user/register.ejs', context)
     
 });
 
@@ -51,21 +55,22 @@ router.post('/login', async (req, res, next) => {
 // Post Route for Registration Page
 router.post('/register', async (req, res, next) => { 
     try{
-        console.log(req.body)
+        //console.log(req.body)
         let formData = req.body;
         let foundUser = await db.User.exists({email: formData.email});
-        console.log(foundUser)
+        //console.log(foundUser)
+        
 
         if(foundUser) return res.redirect("/user/login");
         let rounds = parseInt(process.env.SALT_ROUNDS)
         let salt = await bcrypt.genSalt(rounds);
-        console.log(salt)
+        //console.log(salt)
         let hash = await bcrypt.hash(formData.password, salt);
 
         formData.password = hash;
 
         await db.User.create(formData);
-        console.log(`My hash is ${hash}`)
+        //console.log(`My hash is ${hash}`)
         return res.redirect('/user/login');
 
     }catch(err){

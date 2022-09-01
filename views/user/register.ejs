@@ -3,7 +3,7 @@
 
 <%- include("../partials/head")%>
 <body>
-    <%- include("../partials/navbar")%>
+    <%- include('../partials/new-navbar', {user: user}) %>
     
     <!-- ============= CONTAINER ============== -->
     <div class="register-container">
@@ -29,6 +29,18 @@
               <!-- email -->
               <label class="reg-label" for="email">E-MAIL</label>
               <input class="reg-input" name="email" class="input" type="email"/>
+              <!-- avatar picture -->
+              <div class="field">
+              <label class="label">User Picture</label>
+              <div class="control">
+                <input
+                  name="avatar"
+                  class="input"
+                  type="text"
+                  placeholder="http://"
+                />
+              </div>
+            </div>
           </fieldset>
           <!-- submit button -->
           <input class="reg-button" type="submit" value="REGISTER">
@@ -37,3 +49,4 @@
     </div>
   </body>
 </html>
+

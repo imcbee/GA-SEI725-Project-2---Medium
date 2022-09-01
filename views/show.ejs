@@ -4,7 +4,10 @@
     <%- include('partials/show-head') %>
 
 <body>
-    <%- include('partials/navbar') %>
+
+
+    <%- include('./partials/new-navbar', {user: user}) %>
+
     <main class="container mainContent">
 
         <section class="contentArea">
@@ -36,6 +39,7 @@
                      <div class="articles"><%= articles.text%>
                     </div>
                  </article>
+
 
         
         <!-- Edit and Delete Section -->

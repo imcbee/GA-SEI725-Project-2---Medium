@@ -3,7 +3,7 @@
 <!-- head -->
     <%-  include('partials/head', {page: articles.title}) %> 
 <body>
-    <%- include('partials/navbar') %>
+    <%- include('./partials/new-navbar', {user: user}) %>
     <hr>
     <section class="heroBanner"> 
         <div class="container"> 
@@ -13,6 +13,8 @@
         </div>
     </section>
     <hr>
+
+  
      
     
     <section class="container">
