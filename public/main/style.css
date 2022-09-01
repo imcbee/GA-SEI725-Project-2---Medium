@@ -194,10 +194,24 @@ img{
 /* comment box */
 
 .comments-container{
-    background-color: #F7F6F2;
+    background-color: #F2F2F2;
     margin-top: 40px;
     padding: 20px 20px;
     border-radius: 15px;
+}
+
+.comment-section{
+    font-size: 20px;
+    padding-left: 20px;
+}
+
+.comment-rating{
+    display: flex;
+}
+
+.comment-section a {
+    text-decoration: none;
+    color: #000;
 }
 
 .form-rating,

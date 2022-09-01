@@ -18,14 +18,14 @@
                             <small>Date: <%= articles.publishDate %> </small>    
                         </div>
                     </div>
-                    <!-- <div class="socialShare"> 
+                    <div class="socialShare"> 
                         <ul class="socialShareList">
                             <li><a href="">FB</a></li>
                             <li><a href="">TW</a></li>
                             <li><a href="">IN</a></li>
                             <li><a href="">Link</a></li>
                         </ul>
-                    </div> -->
+                    </div>
                 </div>
                 <article>
                 
@@ -42,11 +42,14 @@
         <!-- Edit and Delete Section -->
 
 
-            <!-- Form for new comment -->
+          <!-- like button  -->
+
         <button class="like_btn">
             <span id="icon"><i class="fa-regular fa-thumbs-up"></i></i></span>
             <span id="count">0</span> Like 
         </button>
+        
+        <!-- Form for new comment -->
 
         <div class="comments-container">
             <h3>Write your comments below:</h3>
@@ -71,13 +74,9 @@
         <% reviews.forEach((element, idx) => {%>
             <div class="comments-container">
                 <div class="comment-rating">
-                    <h3>Rating : <%= element.rating%></h3>
+                    <h3>Rating: <%= element.rating%></h3>
+                    <p class="comment-section"> <a href="/reviews/<%= element._id%>"><%= element.content%></a></p>
                 </div>
-                <div class="comment-section">
-                    <p> <a href="/reviews/<%= element._id%>"><%= element.content%></a></p>
-                </div>
-                
-
             </div>
         <% });%>
         
