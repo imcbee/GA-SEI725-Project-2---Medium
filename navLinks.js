@@ -1,21 +1,31 @@
+// Routes: for non-logged in users
+    //things only for non-users
 const routes = [
-    { href: "/new", title: "New Product" },
-    { href: "/user/logout", title: "Logout" },
+    { href: "/", title: "Home"},
+    { href: "/ourstory", title: "Our Story"},
+    { href: "/user/login", title: "Sign In" },
+    { href: "/user/register", title: "Register" },
 ];
 
+
+// Auth Routes: logged users
+    //write
+    //review
+    //login, register
 const authRoutes = [
-    { href: "/user/login", title: "Login" },
-    { href: "/user/register", title: "Register" },
+    { href: "/", title: "Home"},
+    { href: "/ourstory", title: "Our Story"},
+    { href: "/new", title: "Write" },
+    { href: "/user/logout", title: "Logout" },
 ];
 
 let navLinks = function navLinks(req, res, next) {
     if (req.session.currentUser) {
-        res.locals.routes = routes;
+         res.locals.routes = authRoutes;
     } else {
-        res.locals.routes = authRoutes;
+         res.locals.routes = routes;
     }
-    // locals
-    next();
+    next()
 };
 
 module.exports = navLinks

@@ -31,21 +31,21 @@ app.use(
             maxAge: 1000 * 60 * 60 * 24 * 7 * 2
         },
     })
-);
-    
-    
+    );
+
+
+/* SECTION Middleware */
+app.use((req, res, next) => {
+    res.locals.user = req.session.currentUser;
+    //console.log(`HERE HERE HERE HERE!!!!!!  ${req.session}`)
+    next();
+});   
+app.use(navLinks); 
+   
 app.use('', articles);
 app.use('/reviews', reviews);
 app.use('/user', user);
 
-/* SECTION Middleware */
-app.use(function (req, res, next) {
-    res.locals.user = req.session.currentUser;
-    //console.log(`HERE HERE HERE HERE!!!!!!  ${req.session}`)
-    next();
-});
-    
-app.use(navLinks)
 
 // 404 Route
 app.get('*', (req, res) => {

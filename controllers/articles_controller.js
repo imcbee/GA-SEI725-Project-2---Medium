@@ -1,20 +1,25 @@
 // Importing Statements
 const express = require('express');
-const { articles } = require('.');
 const router = express.Router();
-//require('../config/db.connection')
 
 // Middleware
 router.use(express.json());
 router.use(express.urlencoded({ extended: false }));
 
 // Model Import
-//const articles = require('../models/tempDB')
 const db = require('../models')
+router.get('/ourstory', async(req, res, next) => {
+    const userSession = await db.User.find(req.session.currentUser)
+    const context = {username: userSession, routes: res.locals.routes}
+    res.render('ourstory.ejs', context)
+})
+
+
 
 // New Route
-router.get('/new', (req, res) => {
-    const context = {username: req.session.currentUser.username}
+router.get('/new', async (req, res) => {
+    const userSession = await db.User.find(req.session.currentUser)
+    const context = {username: userSession, routes: res.locals.routes}
     res.render('new.ejs', context)
 })
 
@@ -45,21 +50,9 @@ router.get('/:id', async (req ,res, next) => {
     try{
         const foundArticle = await db.Articles.findById(req.params.id)
         const articleReview = await db.Reviews.find({articles: req.params.id})
-
+        const userSession = await db.User.find(req.session.currentUser)
         
-        //const articleReview = await db.Reviews.find()
-        // let specificReview = [];  //! don't need this after refactor
-        // for(let i =0; i<articleReview.length; i++) {  //! don't need this for loop and conditional after refactoring
-        //     //console.log(articleReview[i])
-        //     if(articleReview[i].articles.equals(foundArticle._id)  ) {
-        //         //console.log('hi')
-        //         specificReview.push(articleReview[i]);
-        //     };
-        // };
-        // console.log(articleReview)
-        // console.log(`user:  ${req.user}`)
-        // console.log(`userSession:  ${req.session.currentUser.username}`)
-        const context = {articles: foundArticle, id: foundArticle._id, reviews: articleReview, username: req.session.currentUser.username}
+        const context = {articles: foundArticle, id: foundArticle._id, reviews: articleReview, username: userSession, routes: res.locals.routes}
       //! change to reviews: articleReview
         //console.log(articleReview)
         res.render('show.ejs', context)
@@ -76,13 +69,14 @@ router.get('/', async (req, res, next) => {
     
     try{
         const allArticles = await db.Articles.find()
-        const userSession = await db.User.find()
-        //const userSession = req.session.currentUser
-        //console.log(req.session.currentUser)
-        //console.log(req.currentUser)
-        //console.log(userSession)
-        const context = {articles: allArticles, username: req.session.currentUser.username};
-        //console.log(allArticles)
+        const userSession = await db.User.find(req.session.currentUser)
+        
+        console.log(userSession)
+        //console.log(req.session)
+        //console.log(`user:  ${res.locals.routes}`)
+        //console.log(`userSession:  ${userSession}`)
+        const context = {articles: allArticles, username: userSession, routes: res.locals.routes};
+        
         res.render("index.ejs", context);
     }catch(err) {
         console.log(err);
@@ -116,9 +110,10 @@ router.get('/:id/edit', async (req, res, next) => {
     
     try{
         const foundArticle = await db.Articles.findById(req.params.id);
+        const userSession = await db.User.find(req.session.currentUser);
         //console.log(foundArticle);
         //let article = articles[req.params.id];
-        res.render('edit.ejs', {articles: foundArticle, id: foundArticle._id, username: req.session.currentUser.username});
+        res.render('edit.ejs', {articles: foundArticle, id: foundArticle._id, username: userSession, routes: res.locals.routes});
     }catch(err) {
         console.log(err);
         res.redirect('/404');
