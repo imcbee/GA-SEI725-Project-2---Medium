@@ -11,15 +11,15 @@ router.use(express.urlencoded({ extended: false }));
 
 // Login Page
 router.get('/login', async (req, res, next) => {
-    // const userArticle = await db.Articles.find()
-    // const context = {articles: userArticle}
-    //console.log(userArticle)
-    res.render('user/login.ejs')
+    const userSession = await db.User.find(req.session.currentUser);
+    const context = {user: userSession, routes: res.locals.routes}
+    res.render('user/login.ejs', context)
 });
 
 // Registration Page
-router.get('/register', (req, res, next) => {
-    
+router.get('/register', async (req, res, next) => {
+    const userSession = await db.User.find(req.session.currentUser);
+    const context = {user: userSession, routes: res.locals.routes}
     res.render('user/register.ejs')
     
 });
