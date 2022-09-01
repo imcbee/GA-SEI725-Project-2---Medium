@@ -18,7 +18,8 @@ router.post('/:id', async (req, res, next) => {
         const newReview = await db.Reviews.create({
             rating: req.body.rating,
             content: req.body.content,
-            articles: req.params.id
+            articles: req.params.id,
+            user: req.session.currentUser.id
         });
         //console.log(newReview)
         res.redirect(`/${req.params.id}`)
@@ -30,14 +31,13 @@ router.post('/:id', async (req, res, next) => {
 })
 
 // Show Route
-//!  How to show user's list of comments?
 router.get('/:id/', async (req, res, next) => {
     //res.send("hello hello hello")
 
     try{
         const articleReview = await db.Reviews.findById(req.params.id)
         const article = await db.Articles.findById(req.params.id)
-        const context = {reviews: articleReview, article: article, username: req.session.currentUser.username}
+        const context = {reviews: articleReview, article: article,}
 
         
         // console.log(articleReview)
@@ -77,7 +77,7 @@ router.get('/:id/edit', async (req, res, next)=>{
         const newReview = await db.Reviews.findById(req.params.id)
         // console.log(req.params.id)
         // console.log(newReview)
-        res.render('reviews/edit.ejs', {reviews: newReview, id: newReview._id, username: req.session.currentUser.username});
+        res.render('reviews/edit.ejs', {reviews: newReview, id: newReview._id,});
     }catch(err) {
         console.log(err);
         res.redirect('/404');

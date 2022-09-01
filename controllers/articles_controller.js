@@ -25,12 +25,20 @@ router.get('/new', async (req, res) => {
 
 // Create Route
 router.post('/', async (req, res, next) => {
-    //res.send('hi')
-    const createdArticle = req.body
-    //articles.push(createdArticle)
-
+    
     try{
+        
+        let createdArticle = {
+            author: req.body.author,
+            title: req.body.title,
+            text: req.body.text,
+            publishDate: req.body.publishDate,
+            image: req.body.image,
+            user: req.session.currentUser.id
+        }
         const newArticle = await db.Articles.create(createdArticle);
+        
+        
         //console.log(newArticle)
         //console.log(req.body)
 
@@ -71,7 +79,7 @@ router.get('/', async (req, res, next) => {
         const allArticles = await db.Articles.find()
         const userSession = await db.User.find(req.session.currentUser)
         
-        //console.log(res.locals.routes)
+        //console.log(req.session.currentUser.id)
         //console.log(req.session)
         //console.log(`user:  ${res.locals.routes}`)
         //console.log(`userSession:  ${userSession}`)
