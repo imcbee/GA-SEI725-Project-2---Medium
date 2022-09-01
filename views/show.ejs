@@ -4,61 +4,86 @@
     <%- include('partials/show-head') %>
 
 <body>
-
     <%- include('partials/navbar') %>
+    <main class="container mainContent">
 
-    <section>
-        <div>
-            <h2 class="title">Article: <%=articles.title %> </h2>
-        </div>
-    </section>
-    
-    <main class="container">
+        <section class="contentArea">
+            <div class="postHeader"> 
+                <div class="postMeta"> 
+                    <div class="authorBox">
+                        <div class="authorImage"><img src="<%=articles.image%>" alt=""></div>
+                        <div class="ahuthorData"><small>Author: <%=articles.author %> </small> <br>
+                            <!-- <small>date: <%= articles.publishDate.toLocaleDateString('en-US') %> </small> -->
+                            <small>Date: <%= articles.publishDate %> </small>    
+                        </div>
+                    </div>
+                    <div class="socialShare"> 
+                        <ul class="socialShareList">
+                            <li><a href="">FB</a></li>
+                            <li><a href="">TW</a></li>
+                            <li><a href="">IN</a></li>
+                            <li><a href="">Link</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <article>
+                
+                    <h2 class="title"><%=articles.title %> </h2>
+                    <div class="postContent"> 
+                     <div class="featuredImage"> 
+                         <img src="<%=articles.image%>" style="max-width: 500px;">
+                     </div>
+                     <div class="articles"><%= articles.text%>
+                    </div>
+                 </article>
+
         
-        <div>
-            <small>author: <%=articles.author %> </small>
+        <!-- Edit and Delete Section -->
+
+
+          <!-- like button  -->
+
+        <button class="like_btn">
+            <span id="icon"><i class="fa-regular fa-thumbs-up"></i></i></span>
+            <span id="count">0</span> Like 
+        </button>
+        
+        <!-- Form for new comment -->
+
+        <div class="comments-container">
+            <h3>Write your comments below:</h3>
+            <form class="" action="/reviews/<%= articles._id%>" method="POST">
+                <div class="form-rating">
+                  <label for="rating"></label>
+                  <input class="form-rating" type="number" placeholder="Rate this article: 0-5" name="rating" id="rating"/>
+                </div>
+      
+                <div class="">
+                  <label for="content"></label>
+                  <textarea class="form-content" name="content" id="content" cols="30" rows="10"placeholder="Write your comment here"></textarea>
+                </div>
+      
+                <button type="submit" class="btn-sec">Submit comment</button>
+            </form>
         </div>
+        
+        <!-- Comment Section -->
 
-        <div>
-            <small>date: <%= articles.publishDate %> </small>
+        <!-- <h3>Comments Section:</h3> -->
 
-            <div>
-                <%= articles.text%>
-            </div>
-
-            <div>
-                <img src="<%=articles.image%> " style="max-width: 500px;">
-            </div>
-
-        <h2>Comments Section</h2>
         <% reviews.forEach((element, idx) => {%>
             <div class="comments-container">
                 <div class="comment-rating">
-                    <h3>Rating : <%= element.rating%></h3>
+                    <h3>Rating: <%= element.rating%></h3>
+                    <p class="comment-section"> <a href="/reviews/<%= element._id%>"><%= element.content%></a></p>
                 </div>
-                <div class="comment-section">
-                    <p>Comment : <a href="/reviews/<%= element._id%>"><%= element.content%></a></p>
-                </div>
-                
             </div>
         <% });%>
+        
+       
+       
+        <!-- Edit and Delete Section -->
 
-        <div>
-            <h3>Write your comments here!</h3>
-            <form action="/reviews/<%= articles._id%>" method="POST">
-                <div>
-                  <label for="rating">Comment Rating</label>
-                  <input type="number" placeholder="0-5" name="rating" id="rating"/>
-                </div>
-      
-                <div>
-                  <label for="content">Comment Text</label>
-                  <textarea name="content" id="content" cols="30" rows="10"placeholder="Write your comment here"></textarea>
-                </div>
-      
-                <button type="submit" class="button is-info">Create Comment</button>
-              </form>
-        </div>
 
         <div>
             <a href="/<%=articles._id%>/edit " >Edit Article</a>
@@ -72,11 +97,9 @@
             </p>
             
         </div>
+        </div>
+        
 
-        <button class="like_btn">
-            <span id="icon"><i class="fa-regular fa-thumbs-up"></i></i></span>
-            <span id="count">0</span> Like 
-        </button>
     </main>
 
 </body>

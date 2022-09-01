@@ -14,13 +14,34 @@
     </section>
     <hr>
      
-    <section>
-        <div class="container">
+    
+    <section class="container">
+        <div class="">
+
             <h2 class="title">All Articles</h2>
+        </div>
+        <div class="postGrids three-col">
+            <% for (let i = 0; i < articles.length; i++){ %> 
+                <% const firstArticle = articles[i] %>
+            <div class="grid">
+                <div class="count">01</div>
+                <div class="postItem">
+                    <div class="authorMeta"><img src="" alt="" class="authorImage">
+                        <span class="authorName"><%= firstArticle.author %> </span>
+                    </div>
+
+                    <div class="postTitle">
+                        <a href="<%= firstArticle._id %> "><%=firstArticle.title %> </a>
+                    </div>
+                    <div class="postMeta"><span class="date"><%= (new Date(firstArticle.publishDate)). toLocaleDateString('en-US') %> </span> ▪ 16 min read</div>
+                </div>
+
+            </div>
+            <% }; %> 
         </div>
     </section>
 
-    <main class="container">
+    <!-- <main class="container">
         <div>
             <% articles.forEach((element, idx) => { %>
                 <a href="/<%= element._id %> "><%=element.title %> </a>
@@ -30,7 +51,7 @@
             <% });%>
             
         </div>
-    </main>
+    </main> -->
     
 </body>
 </html>
