@@ -4,11 +4,9 @@ const { articles } = require('.');
 const router = express.Router();
 //require('../config/db.connection')
 
-
 // Middleware
 router.use(express.json());
 router.use(express.urlencoded({ extended: false }));
-
 
 // Model Import
 //const articles = require('../models/tempDB')
@@ -45,9 +43,21 @@ router.get('/:id', async (req ,res, next) => {
     
     try{
         const foundArticle = await db.Articles.findById(req.params.id)
-        const articleReview = await db.Reviews.find()
-        const context = {articles: foundArticle, id: foundArticle._id, reviews: articleReview}
-        //console.log(foundArticle)
+        const articleReview = await db.Reviews.find({articles: req.params.id})
+
+        
+        //const articleReview = await db.Reviews.find()
+        // let specificReview = [];  //! don't need this after refactor
+        // for(let i =0; i<articleReview.length; i++) {  //! don't need this for loop and conditional after refactoring
+        //     //console.log(articleReview[i])
+        //     if(articleReview[i].articles.equals(foundArticle._id)  ) {
+        //         //console.log('hi')
+        //         specificReview.push(articleReview[i]);
+        //     };
+        // };
+        // console.log(articleReview)
+        const context = {articles: foundArticle, id: foundArticle._id, reviews: articleReview}  //! change to reviews: articleReview
+        //console.log(articleReview)
         res.render('show.ejs', context)
     }catch(err) {
         console.log(err);
@@ -55,7 +65,6 @@ router.get('/:id', async (req ,res, next) => {
         return next();
     }
 })
-
 
 // Index Route
 router.get('/', async (req, res, next) => {
@@ -73,7 +82,6 @@ router.get('/', async (req, res, next) => {
     }
 })
 
-
 // Destroy Route
 router.delete('/:id', async (req, res, next) =>{
     //res.send('delete')
@@ -89,7 +97,6 @@ router.delete('/:id', async (req, res, next) =>{
         return next();
     }
 })
-
 
 // Edit Route
 router.get('/:id/edit', async (req, res, next) => {
@@ -110,7 +117,6 @@ router.get('/:id/edit', async (req, res, next) => {
     }
 })
 
-
 // Update Route
 router.put('/:id', async (req, res, next) => {
     //res.send('hi')
@@ -125,8 +131,5 @@ router.put('/:id', async (req, res, next) => {
         return next();
     }
 })
-
-
-
 
 module.exports = router;

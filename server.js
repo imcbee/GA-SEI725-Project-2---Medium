@@ -1,14 +1,13 @@
 // Importing Statments
 const express = require('express');
 const methodOverride = require('method-override');
-require('dotenv').config();
+const session = require('express-session')
 const MongoStore = require('connect-mongo');
-
+require('dotenv').config();
 
 // Controller Imports
-const {articles, reviews} = require('./controllers');
+const {articles, reviews, user} = require('./controllers');
 //const controller = require('./controllers/articles_controller')
-
 
 // App Configuration
 const app = express();
@@ -19,22 +18,26 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(methodOverride('_method'));
 
-
+app.use(
+    session({
+        store: MongoStore.create({ mongoUrl: process.env.MONGODB_URL }),
+        secret: 'super secret',
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            maxAge: 1000 * 60 * 60 * 24 * 7 * 2
+        },
+    })
+);
 
 app.use('', articles);
 app.use('/reviews', reviews);
-
-
-
-
+app.use('/user', user);
 
 // 404 Route
 app.get('*', (req, res) => {
     res.render('404.ejs')
 })
-
-
-
 
 // SERVER
 app.listen(port, () => {

@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- head -->
+
     <%-  include('partials/head') %> 
+
     <body>
+
         <%- include('partials/navbar') %>
 
         <form action="/<%= articles._id%>?_method=PUT" method="POST">
@@ -17,19 +19,18 @@
             </div>
         
             <div>
-                    <label>Article Image</label>
-                    <input class="input" type="text" placeholder="Article Author" name="url" value="<%= articles.image %> "/>
+                <label>Article Image</label>
+                <input class="input" type="text" placeholder="Article Author" name="url" value="<%= articles.image %> "/>
             </div>
 
             <div>
-                    <label>Article Text</label>
-                    <textarea name="text" id="text" cols="100" rows="50"></textarea>
+                <label>Article Text</label>
+                <textarea name="text" id="text" cols="100" rows="50"></textarea>
             </div>
             
             <div>
                 <input type="submit" value="Edit Article">
             </div>
-        
         </form>
         
     </body>

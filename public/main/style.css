@@ -248,3 +248,258 @@ img{
     border-radius: 5px;
     cursor: pointer;
 }
+
+/* registation  */
+.logoPic {
+    display: flex;
+    margin: 180px 80px;
+    align-self: center;
+    justify-content: center;
+    width: 250px;
+    height: 250px;
+    border-radius: 5%;
+    overflow: hidden;
+}
+
+.img.rounded-corners {
+    border-radius: 10px;
+}
+  
+.register-container {
+    width: 80vw;
+    margin: 50px auto;
+    display: flex;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px #bbb,
+                -1px -1px 10px #bbb,
+                1px -1px 10px #bbb,
+                -1px 1px 10px #bbb;
+}
+
+.sidebar {
+    width: 50%;
+    background-color: #FFC017;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 10px 0 0 10px;
+}
+
+.registration {
+    width: 50%;
+    background: #f9f9f9;
+    border-radius: 0 10px 10px 0;
+    padding: 15px;
+    box-sizing: border-box;
+    overflow: auto;
+}
+  
+h1 {
+    font-family: 'Oswald';
+    font-weight: 500;
+    border-bottom: 2px solid #FFC017;
+}
+  
+fieldset {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+  
+legend {
+    padding: 0px, 10px;
+    font-family: 'Oswald';
+    font-weight: 500;
+    color: black;
+}
+  
+.reg-label {
+    font-family: 'Oswald';
+    font-weight: 400;
+    display: block;
+}
+  
+.reg-input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #FFC017;
+}
+  
+.reg-input:focus {
+    outline: 0;
+    border: 1px solid black;
+}
+  
+.reg-button[type="submit"] {
+    width: 100%;
+    height: 50px;
+    background: #FFC017;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .8);
+    font-family: 'Oswald';
+    font-size: 1.3em;
+    color: whitesmoke;
+    border: 0px;
+    border-radius: 10px;
+    transition: 0.2s ease-in-out;
+}
+  
+.reg-button[type="submit"]:hover {
+    cursor: pointer;
+    background: black;
+    transition: 0.4s ease-in-out;
+}
+  
+textarea {
+    resize: none;
+    height: 75px;
+}
+/* end of registration */
+
+/* Login */
+.login-container {
+    width: 80vw;
+    margin: 50px auto;
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px #bbb,
+                -1px -1px 10px #bbb,
+                1px -1px 10px #bbb,
+                -1px 1px 10px #bbb;
+}
+.login-sidebar {
+    width: 50%;
+    background-color: #FFC017;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 10px 0 0 10px;
+}
+
+.login {
+    width: 50%;
+    background: #f9f9f9;
+    border-radius: 0 10px 10px 0;
+    padding: 15px;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+.login-welcome {
+    text-align: center;
+}
+
+.login-label {
+    font-family: 'Oswald';
+    font-weight: 400;
+    display: block;
+}
+
+.login-input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #FFC017;
+}
+
+.login-input:focus {
+    outline: 0;
+    border: 1px solid black;
+}
+
+.login-button[type="submit"] {
+    width: 100%;
+    height: 50px;
+    background: #FFC017;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .8);
+    font-family: 'Oswald';
+    font-size: 1.3em;
+    color: whitesmoke;
+    border: 0px;
+    border-radius: 10px;
+    transition: 0.2s ease-in-out;
+}
+  
+.login-button[type="submit"]:hover {
+    cursor: pointer;
+    background: black;
+    transition: 0.4s ease-in-out;
+}
+/* end of login */
+
+/* New Page */
+.title-new {
+    font-family: "Oswald";
+    font-weight: bold;
+    text-align: center;
+}
+
+.new-container {
+    width: 80vw;
+    margin: 50px auto;
+    display: flex;
+}
+
+.new-input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 25px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 3px solid #FFC017;
+}
+
+.new-input-a, .new-input-b {
+    width: 100%;
+    margin: 10px 0;
+    padding: 25px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 3px solid #FFC017;
+}
+
+.new-input:focus, .new-input-a:focus, .new-input-b:focus {
+    outline: 0;
+    border: 5px solid black;
+}
+
+.new-label {
+    font-weight: 600;
+}
+
+.new-button[type="submit"] {
+    width: 100%;
+    height: 50px;
+    background: #FFC017;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .8);
+    font-family: 'Oswald';
+    font-size: 1.3em;
+    color: whitesmoke;
+    border: 0px;
+    border-radius: 10px;
+    transition: 0.4s ease-in-out;
+}
+  
+.new-button[type="submit"]:hover {
+    cursor: pointer;
+    background: black;
+    transition: 0.4s ease-in-out;
+}
+
+.new-textarea {
+        resize: none;
+        height: 200px;
+        width: 99%;
+        border: 3px solid #FFC017;
+        border-radius: 5px;
+}
+
+.new-textarea:focus {
+    outline: 0;
+    border: 5px solid black;
+}
+
+::placeholder {
+    text-align: center;
+}

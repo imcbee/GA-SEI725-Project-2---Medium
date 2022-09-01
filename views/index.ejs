@@ -7,9 +7,9 @@
     <hr>
     <section class="heroBanner"> 
         <div class="container"> 
-         <div class="herotitle">Stay Curious.</div>
-         <div class="subtitle">Discover stories, thinking, and expertise from writers on any topic.</div>
-         <div class="action"><a href="/show" class="btn btn-regular">Start Reading</a></div>
+            <div class="herotitle">Stay Curious.</div>
+            <div class="subtitle">Discover stories, thinking, and expertise from writers on any topic.</div>
+            <div class="btn btn-regualar"><a href="/<%= articles[Math.floor(Math.random() * articles.length)]._id%>">Start Reading</a></div> 
         </div>
     </section>
     <hr>
@@ -17,6 +17,7 @@
     
     <section class="container">
         <div class="">
+
             <h2 class="title">All Articles</h2>
         </div>
         <div class="postGrids three-col">
@@ -42,13 +43,13 @@
 
     <!-- <main class="container">
         <div>
-            <% for( let i = 0; i < articles.length; i++){ %>
-                <% const firstArticle = articles[i] %>
-                <a href="/<%= firstArticle._id %> "><%=firstArticle.title %> </a>
+            <% articles.forEach((element, idx) => { %>
+                <a href="/<%= element._id %> "><%=element.title %> </a>
                 <div>
-                    <%= firstArticle.text %> 
+                    <%= element.text %> 
                 </div>
-                <% }; %> 
+            <% });%>
+            
         </div>
     </main> -->
     
