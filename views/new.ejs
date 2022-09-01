@@ -9,40 +9,40 @@
 
     <section>
       <div>
-        <h1 class="title">New Story</h1>
+        <h1 class="title-new">New Story</h1>
       </div>
     </section>
     
-    <main class="container">
+    <main class="new-container">
       <div>
         <form action="/" method="POST">
 
           <div>
-            <label for="title">Article Title</label>
-            <input type="text" placeholder="Article Title" name="title" id="title"/>
+            <label class="new-label" for="title">Title</label>
+            <input class="new-input" type="text" placeholder="Article Title" name="title" id="title"/>
+          </div>
+
+          <div style="float: left;">
+            <label class="new-label" for="author">Author</label>
+            <input class="new-input-a" type="text" placeholder="Author Name" name="author" id="author" />
+          </div>
+
+          <div style="float: right;">
+            <label class="new-label" for="publishDate">Publish Date</label>
+            <input class="new-input-b" type="text" placeholder="YYYY/MM/DD" name="publishDate" id="publishDate" />
+          </div>
+
+          <div style="clear:both">
+            <label class="new-label" for="image">Photo</label>
+            <input class="new-input" type="text" placeholder="http://" name="image" id="image"/>
           </div>
 
           <div>
-            <label for="author">Article Author</label>
-            <input type="text" placeholder="Author Name" name="author" id="author" />
+            <label class="new-label" for="text">Content</label>
+            <textarea class="new-textarea" name="text" id="text" cols="100" rows="50" placeholder="Write your article here!"></textarea>
           </div>
 
-          <div>
-            <label for="publishDate">Publish Date</label>
-            <input type="text" placeholder="YYYY/MM/DD" name="publishDate" id="publishDate" />
-          </div>
-
-          <div>
-            <label for="image">Article Image</label>
-            <input class="input" type="text" placeholder="http://" name="image" id="image"/>
-          </div>
-
-          <div>
-            <label for="text">Article Text</label>
-            <textarea name="text" id="text" cols="100" rows="50" placeholder="Write your article here!"></textarea>
-          </div>
-
-          <button type="submit" class="button is-info">Create Article</button>
+          <input class="new-button" type="submit" value="Create">
         </form>
       </div>
     </main>
