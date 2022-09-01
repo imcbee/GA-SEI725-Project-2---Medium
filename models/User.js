@@ -15,15 +15,20 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
+    },
+    avatar: {
+        type: String,
+        default:
+            "https://picsum.photos/200/300.jpg",
     }, 
-    // reviews: { 
-    //     type: mongoose.Types.ObjectId, 
-    //     ref: 'Review' 
-    // },
-    // articles: {
-    //     type: mongoose.Types.ObjectId,
-    //     ref: 'Article'
-    // },
+    reviews: { 
+        type: mongoose.Types.ObjectId, 
+        ref: 'Review' 
+    },
+    articles: {
+        type: mongoose.Types.ObjectId,
+        ref: 'Article'
+    },
 }, { timestamps: true });
 
 const User = mongoose.model('User', userSchema);

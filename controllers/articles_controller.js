@@ -71,7 +71,7 @@ router.get('/', async (req, res, next) => {
         const allArticles = await db.Articles.find()
         const userSession = await db.User.find(req.session.currentUser)
         
-        console.log(userSession)
+        //console.log(res.locals.routes)
         //console.log(req.session)
         //console.log(`user:  ${res.locals.routes}`)
         //console.log(`userSession:  ${userSession}`)
