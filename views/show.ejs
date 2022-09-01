@@ -43,6 +43,11 @@
 
 
             <!-- Form for new comment -->
+        <button class="like_btn">
+            <span id="icon"><i class="fa-regular fa-thumbs-up"></i></i></span>
+            <span id="count">0</span> Like 
+        </button>
+
         <div class="comments-container">
             <h3>Write your comments below:</h3>
             <form class="" action="/reviews/<%= articles._id%>" method="POST">
@@ -93,11 +98,6 @@
             
         </div>
         </div>
-
-        <button class="like_btn">
-            <span id="icon"><i class="fa-regular fa-thumbs-up"></i></i></span>
-            <span id="count">0</span> Like 
-        </button>
         
     </main>
 
