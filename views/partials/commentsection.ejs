@@ -1,0 +1,70 @@
+<% if(user) {%>
+ <!-- New like button  -->
+<div class="votebutton" >
+    <form action="/<%= articles._id%>?_method=PUT" method="POST">
+        <input hidden value="<%= articles.vote + 1 %>" name="vote">
+        <span class="vote-total"><%= articles.vote%> Likes</span>
+        <button class="vote"><span id="icon"><i class="fa-regular fa-thumbs-up"></i></i></span></button>
+    </form>
+</div>
+
+<!-- Old like button  -->
+<button class="like_btn">
+    <span id="icon"><i class="fa-regular fa-thumbs-up"></i></i></span>
+    <span id="count">0</span> Like 
+</button>
+
+<!-- Form for new comment -->
+
+<div class="comments-container">
+    <h3>Write your comments below:</h3>
+    <form class="" action="/reviews/<%= articles._id%>" method="POST">
+        <div class="form-rating">
+          <label for="rating"></label>
+          <input class="form-rating" type="number" placeholder="Rate this article: 0-5" name="rating" id="rating"/>
+        </div>
+
+        <div class="">
+          <label for="content"></label>
+          <textarea class="form-content" name="content" id="content" cols="30" rows="10"placeholder="Write your comment here"></textarea>
+        </div>
+
+        <button type="submit" class="btn-sec">Submit comment</button>
+    </form>
+</div>
+
+<!-- Comment Section -->
+
+<!-- <h3>Comments Section:</h3> -->
+
+<% reviews.forEach((element, idx) => {%>
+    <div class="comments-container">
+        <div class="comment-rating">
+            <h3>Rating: <%= element.rating%></h3>
+            <p class="comment-section"> <a href="/reviews/<%= element._id%>"><%= element.content%></a></p>
+        </div>
+    </div>
+<% });%>
+
+
+
+<!-- Edit and Delete Section -->
+
+
+<div>
+    <a href="/<%=articles._id%>/edit " >Edit Article</a>
+</div>
+
+<div>
+    <p class="control">
+        <form action="/<%=articles._id%>?_method=DELETE" method="POST">
+            <input class='button is-danger' type="submit" value="Delete Article"/>
+        </form>
+    </p>
+    
+</div>
+<% } else{ %>
+    
+    <h1><strong>Please Sign In to Comment!</strong></h1>
+
+<% }%>

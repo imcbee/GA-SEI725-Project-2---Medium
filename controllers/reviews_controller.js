@@ -21,7 +21,7 @@ router.post('/:id', async (req, res, next) => {
             articles: req.params.id,
             user: req.session.currentUser.id
         });
-        //console.log(newReview)
+        
         res.redirect(`/${req.params.id}`)
     }catch(err){
         console.log(err);
@@ -37,11 +37,13 @@ router.get('/:id/', async (req, res, next) => {
     try{
         const articleReview = await db.Reviews.findById(req.params.id)
         const article = await db.Articles.findById(req.params.id)
-        const context = {reviews: articleReview, article: article,}
+        const context = {
+            reviews: articleReview,
+            article: article,
+        }
 
         
-        // console.log(articleReview)
-        // console.log(article)
+        
         res.render('reviews/show.ejs', context)
         
         
@@ -56,10 +58,8 @@ router.get('/:id/', async (req, res, next) => {
 
 // Destroy Route
 router.delete('/:id', async (req, res, next) => {
-    //res.send('delete review')
 
     try{
-        //console.log(req.params.id)
         const foundReview = await db.Reviews.findByIdAndDelete(req.params.id)
         return res.redirect('/')
     }catch(err) {
@@ -71,12 +71,15 @@ router.delete('/:id', async (req, res, next) => {
 
 // Edit Route
 router.get('/:id/edit', async (req, res, next)=>{
-    //res.send('oh my my my')
     
     try{
         const newReview = await db.Reviews.findById(req.params.id)
-        // console.log(req.params.id)
-        // console.log(newReview)
+        const userSession = await db.User.find(req.session)
+        const context = {
+            username: userSession, 
+            routes: res.locals.routes
+        }
+        
         res.render('reviews/edit.ejs', {reviews: newReview, id: newReview._id,});
     }catch(err) {
         console.log(err);
@@ -87,7 +90,6 @@ router.get('/:id/edit', async (req, res, next)=>{
 
 // Update Route
 router.put('/:id', async (req, res, next) => {
-    //res.send('hi')
     
     try{
         const updatedReview = req.body;

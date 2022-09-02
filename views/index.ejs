@@ -3,7 +3,7 @@
 <!-- head -->
     <%-  include('partials/head', {page: articles.title}) %> 
 <body>
-    <%- include('./partials/new-navbar', {user: user}) %>
+    <%- include('./partials/new-navbar', {user: user, username: username}) %>
     <hr>
     <section class="heroBanner"> 
         <div class="container"> 
@@ -14,6 +14,8 @@
     </section>
     <hr>
 
+    
+    <% console.log(username[0].avatar)%>
   
    <% const random = (min, max) => {return Math.floor(Math.random() * (max - min)) + min};%>  
     

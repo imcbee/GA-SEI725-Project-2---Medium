@@ -10,7 +10,10 @@ router.use(express.urlencoded({ extended: false }));
 const db = require('../models')
 router.get('/ourstory', async(req, res, next) => {
     const userSession = await db.User.find(req.session.currentUser)
-    const context = {username: userSession, routes: res.locals.routes}
+    const context = {
+        username: userSession, 
+        routes: res.locals.routes
+    }
     res.render('ourstory.ejs', context)
 })
 
@@ -19,7 +22,10 @@ router.get('/ourstory', async(req, res, next) => {
 // New Route
 router.get('/new', async (req, res) => {
     const userSession = await db.User.find(req.session.currentUser)
-    const context = {username: userSession, routes: res.locals.routes}
+    const context = {
+        username: userSession, 
+        routes: res.locals.routes
+    }
     res.render('new.ejs', context)
 })
 
@@ -61,7 +67,13 @@ router.get('/:id', async (req ,res, next) => {
         const articleReview = await db.Reviews.find({articles: req.params.id})
         const userSession = await db.User.find(req.session.currentUser)
         
-        const context = {articles: foundArticle, id: foundArticle._id, reviews: articleReview, username: userSession, routes: res.locals.routes}
+        const context = {
+            articles: foundArticle, 
+            id: foundArticle._id, 
+            reviews: articleReview, 
+            username: userSession, 
+            routes: res.locals.routes
+        }
       //! change to reviews: articleReview
         //console.log(articleReview)
         res.render('show.ejs', context)
@@ -80,11 +92,16 @@ router.get('/', async (req, res, next) => {
         const allArticles = await db.Articles.find()
         const userSession = await db.User.find(req.session.currentUser)
         
-        //console.log(req.session.currentUser.id)
-        //console.log(req.session)
-        //console.log(`user:  ${res.locals.routes}`)
-        //console.log(`userSession:  ${userSession}`)
-        const context = {articles: allArticles, username: userSession, routes: res.locals.routes};
+        // console.log("req.session.currentUser"+req.session.currentUser)
+        // console.log("req.session" +req.session)
+        // //console.log(`user:  ${res.locals.routes}`)
+        // console.log(`userSession:  ${userSession}`)
+
+        const context = {
+            articles: allArticles, 
+            username: userSession, 
+            routes: res.locals.routes
+        };
         
         res.render("index.ejs", context);
     }catch(err) {
@@ -120,9 +137,15 @@ router.get('/:id/edit', async (req, res, next) => {
     try{
         const foundArticle = await db.Articles.findById(req.params.id);
         const userSession = await db.User.find(req.session.currentUser);
+        const context = {
+            articles: foundArticle, 
+            id: foundArticle._id, 
+            username: userSession, 
+            routes: res.locals.routes
+        }
         //console.log(foundArticle);
         //let article = articles[req.params.id];
-        res.render('edit.ejs', {articles: foundArticle, id: foundArticle._id, username: userSession, routes: res.locals.routes});
+        res.render('edit.ejs', context);
     }catch(err) {
         console.log(err);
         res.redirect('/404');
