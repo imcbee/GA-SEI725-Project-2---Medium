@@ -6,7 +6,7 @@
 <body>
 
 
-    <%- include('./partials/new-navbar', {user: user, username: username}) %>
+    <%- include('./partials/new-navbar', {user: user, username: username, articles: articles}) %>
 
     <main class="container mainContent">
 
@@ -43,8 +43,15 @@
 
         <!-- ! New Comment Section Area -->
         <%- include('./partials/commentsection') %>
-        
+        <% //console.log(user)%>
+        <% console.log( user)%>
+        <%console.log(session.currentUser)%>
 
+        <%if(typeof user !== 'undefined' && session.currentUser === user) { %>
+            <%- include('./partials/editdelete') %>
+        <% }%>
+
+        
     </main>
 
 </body>

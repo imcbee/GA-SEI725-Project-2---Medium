@@ -3,7 +3,7 @@
 <!-- head -->
     <%-  include('partials/head', {page: articles.title}) %> 
 <body>
-    <%- include('./partials/new-navbar', {user: user, username: username}) %>
+    <%- include('./partials/new-navbar', {user: user, username: username, articles: articles}) %>
     <hr>
     <section class="heroBanner"> 
         <div class="container"> 
@@ -15,10 +15,21 @@
     <hr>
 
     
-    <% console.log(username[0].avatar)%>
-  
-   <% const random = (min, max) => {return Math.floor(Math.random() * (max - min)) + min};%>  
     
+
+<% function wordCount(str) {%>
+    <%let words = 0; %>
+    
+    <%for(let i=0; i<str.length; i++) {%>
+        <%if(str[i] === ' ') words++ %>
+    <% };%>
+        
+    <%let readTime = Math.floor(words / 238); %>
+    <%if(readTime < 1) return 1; %>
+
+    <%return readTime; %>
+<% };%>
+
     <section class="container">
         <div class="">
 
@@ -38,7 +49,7 @@
                     <div class="postTitle">
                         <a href="<%= element._id %> "><%=element.title %> </a>
                     </div>
-                    <div class="postMeta"><span class="date"><%= (new Date(element.publishDate)).toLocaleDateString('en-US') %> </span>▪ <%= random(12, 20) %> min read</div>
+                    <div class="postMeta"><span class="date"><%= (new Date(element.publishDate)).toLocaleDateString('en-US') %> </span>▪ <%= wordCount(element.text) %> min read</div>
                 </div>
 
             </div>
@@ -46,17 +57,7 @@
         </div>
     </section>
 
-    <!-- <main class="container">
-        <div>
-            <% articles.forEach((element, idx) => { %>
-                <a href="/<%= element._id %> "><%=element.title %> </a>
-                <div>
-                    <%= element.text %> 
-                </div>
-            <% });%>
-            
-        </div>
-    </main> -->
+    
     
 </body>
 </html>

@@ -66,17 +66,36 @@ router.get('/:id', async (req ,res, next) => {
         const foundArticle = await db.Articles.findById(req.params.id)
         const articleReview = await db.Reviews.find({articles: req.params.id})
         const userSession = await db.User.find(req.session.currentUser)
+        //console.log(foundArticle.user)
         
-        const context = {
+        if(req.session) {
+            const session =req.session
+            const context = {
+                articles: foundArticle, 
+                id: foundArticle._id, 
+                reviews: articleReview, 
+                username: userSession, 
+                routes: res.locals.routes,
+                userId: foundArticle.user,
+                session: session 
+            }
+            //console.log(context)
+            res.render('show.ejs', context)
+        }else {
+            const context = {
             articles: foundArticle, 
             id: foundArticle._id, 
             reviews: articleReview, 
             username: userSession, 
-            routes: res.locals.routes
+            routes: res.locals.routes,
+            userId: foundArticle.user 
+            }
+            res.render('show.ejs', context)
         }
+        //console.log(context)
       //! change to reviews: articleReview
-        //console.log(articleReview)
-        res.render('show.ejs', context)
+        //console.log(req.session.currentUser.id)
+        
     }catch(err) {
         console.log(err);
         res.redirect('/404');
