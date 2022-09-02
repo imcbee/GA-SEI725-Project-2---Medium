@@ -15,7 +15,10 @@ const articleSchema = new mongoose.Schema(
 		type: mongoose.Types.ObjectId,
 		ref: 'User'
 	},
-	},{ timestamps: true });
+	vote: {
+		type: Number, default: 0
+	}
+},{ timestamps: true });
 
 const Article = mongoose.model('Article', articleSchema);
 

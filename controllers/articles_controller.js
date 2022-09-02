@@ -34,7 +34,8 @@ router.post('/', async (req, res, next) => {
             text: req.body.text,
             publishDate: req.body.publishDate,
             image: req.body.image,
-            user: req.session.currentUser.id
+            user: req.session.currentUser.id,
+            vote: req.body.vote
         }
         const newArticle = await db.Articles.create(createdArticle);
         

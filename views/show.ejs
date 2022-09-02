@@ -45,8 +45,16 @@
         <!-- Edit and Delete Section -->
 
 
-          <!-- like button  -->
-
+        <!-- New like button  -->
+        <div class="votebutton" >
+            <form action="/<%= articles._id%>?_method=PUT" method="POST">
+                <input hidden value="<%= articles.vote + 1 %>" name="vote">
+                <span class="vote-total"><%= articles.vote%> Likes</span>
+                <button class="vote"><span id="icon"><i class="fa-regular fa-thumbs-up"></i></i></span></button>
+            </form>
+        </div>
+        
+        <!-- Old like button  -->
         <button class="like_btn">
             <span id="icon"><i class="fa-regular fa-thumbs-up"></i></i></span>
             <span id="count">0</span> Like 
