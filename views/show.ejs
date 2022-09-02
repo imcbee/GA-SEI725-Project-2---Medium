@@ -43,11 +43,11 @@
 
         <!-- ! New Comment Section Area -->
         <%- include('./partials/commentsection') %>
-        <% //console.log(user)%>
-        <% console.log( user)%>
+        <% console.log(user)%>
+        <%//console.log( articles.user)%>
         <%console.log(session.currentUser)%>
 
-        <%if(typeof user !== 'undefined' && session.currentUser === user) { %>
+        <%if(typeof user !== 'undefined' && articles.user.toString() == user.id) { %>
             <%- include('./partials/editdelete') %>
         <% }%>
 
