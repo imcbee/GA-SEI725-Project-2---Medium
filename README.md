@@ -67,7 +67,7 @@ JavaScript was used on EJS files to give funtionality on the index and show page
 Node.js was used as the back-end environment while Express was the framework to build our web application.
 
 ### Mongoose and MongoDB
-MongoDB was used as our NoSQL database storage and mongoose served to connect the Node.js environment with MongoDB by translating and representing data relationships along with schema validation.
+MongoDB was used as our NoSQL database and database storage.  Mongoose served to connect the Node.js environment with MongoDB by translating and representing data relationships along with schema validation.
 
 ### Postman
 Postman was used as a tool to make sure establish routes were functioning properly and that database documents were correctly relating to other database documents.
@@ -75,10 +75,54 @@ Postman was used as a tool to make sure establish routes were functioning proper
 
 
 ## Coding Challenges:<a name="codingchallenges"></a>
+The best solution to grant user privileges was to display the EJS HTML elements if it meet a conditional.  In the instance of having the user being granted to edit and delete their own written article was difficult because of exactly knowing what the data type and how it was structured to be able to make the comparison.  The strategy was to be able to understand the data type through console-logging the data and matching the user's ID data type with the article's user ID property data.  This was not appparent at first because the article's user ID needed to be converted into a string before matching the user-in-session's ID.
 
+Show Page 
+```javascript
+<%if(typeof user !== 'undefined' && articles.user.toString() == user.id) { %>
+            <%- include('./partials/editdelete') %>
+        <% }%>
+```
+Show Route in Articles Controller
+```javascript
+router.get('/:id', async (req ,res, next) => {
+    try{
+        const foundArticle = await db.Articles.findById(req.params.id)
+        const articleReview = await db.Reviews.find({articles: req.params.id})
+        const userSession = await db.User.find(req.session.currentUser)
+        
+        if(req.session) {
+            const session =req.session
+            const context = {
+                articles: foundArticle, 
+                id: foundArticle._id, 
+                reviews: articleReview, 
+                username: userSession, 
+                routes: res.locals.routes,
+                userId: foundArticle.user,
+                session: session 
+            }
+            res.render('show.ejs', context)
+        }else {
+            const context = {
+            articles: foundArticle, 
+            id: foundArticle._id, 
+            reviews: articleReview, 
+            username: userSession, 
+            routes: res.locals.routes,
+            userId: foundArticle.user 
+            }
+            res.render('show.ejs', context)
+        }
+    }catch(err) {
+        console.log(err);
+        res.redirect('/404');
+        return next();
+    }
+})
+```
 
-
-Please copy and paste desired code with back 3 ticks `place code in here `
+Please copy and paste desired code with back 3 ticks ```javascript place code in here ```
 
 
 ## Future Steps:
