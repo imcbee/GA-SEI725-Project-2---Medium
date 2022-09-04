@@ -1,4 +1,5 @@
 # General Assembly SEI725 Project 2: Reverse Engineer Medium
+
 ##### Table of Contents  
 1. [Website Link](#websitelink)
 2. [Project Description](#projectdescription)  
@@ -8,8 +9,9 @@
 6. [Tech Stack](#techstack) 
 7. [Coding Challenges](#codingchallenges)
 
-## Website Link:<a name="websitelink"></a>
-[Link](https://ga725-project2-medium.herokuapp.com/)
+---
+### [Website Link](https://ga725-project2-medium.herokuapp.com/)<a name="websitelink"></a>
+---
 
 ## Project Description:<a name="projectdescription"></a>
 The purpose of this project is to reverse engineer a full-stack web application using Express, Mode.js, Mongoose and MongoDB.  Our team had selected the blogging website Medium because of our interest in blogs and the type of documents and relationships in our database.  For our web application, we have built capabilities for users to create an account with user authentication, to create blog posts and make reviews of other user's blog posts.
@@ -77,22 +79,22 @@ Postman was used as a tool to make sure establish routes were functioning proper
 ## Coding Challenges:<a name="codingchallenges"></a>
 The best solution to grant user privileges was to display the EJS HTML elements if it meet a conditional.  In the instance of having the user being granted to edit and delete their own written article was difficult because of exactly knowing what the data type and how it was structured to be able to make the comparison.  The strategy was to be able to understand the data type through console-logging the data and matching the user's ID data type with the article's user ID property data.  This was not appparent at first because the article's user ID needed to be converted into a string before matching the user-in-session's ID.
 
-Show Page 
+Show Page: 
 ```javascript
-<%if(typeof user !== 'undefined' && articles.user.toString() == user.id) { %>
-            <%- include('./partials/editdelete') %>
-        <% }%>
+<%if(typeof user !== 'undefined' && articles.user.toString() === user.id) { %>
+        <%- include('./partials/editdelete') %>
+<% }%>
 ```
-Show Route in Articles Controller
+Show Route in Articles Controller:
 ```javascript
 router.get('/:id', async (req ,res, next) => {
     try{
-        const foundArticle = await db.Articles.findById(req.params.id)
-        const articleReview = await db.Reviews.find({articles: req.params.id})
-        const userSession = await db.User.find(req.session.currentUser)
+        const foundArticle = await db.Articles.findById(req.params.id);
+        const articleReview = await db.Reviews.find({articles: req.params.id});
+        const userSession = await db.User.find(req.session.currentUser);
         
         if(req.session) {
-            const session =req.session
+            const session =req.session;
             const context = {
                 articles: foundArticle, 
                 id: foundArticle._id, 
@@ -101,8 +103,8 @@ router.get('/:id', async (req ,res, next) => {
                 routes: res.locals.routes,
                 userId: foundArticle.user,
                 session: session 
-            }
-            res.render('show.ejs', context)
+            };
+            res.render('show.ejs', context);
         }else {
             const context = {
             articles: foundArticle, 
@@ -111,18 +113,21 @@ router.get('/:id', async (req ,res, next) => {
             username: userSession, 
             routes: res.locals.routes,
             userId: foundArticle.user 
-            }
-            res.render('show.ejs', context)
+            };
+            res.render('show.ejs', context);
         }
     }catch(err) {
         console.log(err);
         res.redirect('/404');
         return next();
-    }
-})
+    };
+});
 ```
 
-Please copy and paste desired code with back 3 ticks ```javascript place code in here ```
+Please copy and paste desired code with back 3 ticks 
+```javascript 
+place code in here 
+```
 
 
 ## Future Steps:
@@ -134,6 +139,10 @@ Please copy and paste desired code with back 3 ticks ```javascript place code in
 
 
 ## Support:
+Please contact one of the following emails below for questions or support:  
+imcbee@terpmail.umd.edu\
+next email\
+next email\
 
 ## Contributions:
 ### Ian McBee
@@ -142,3 +151,5 @@ Please copy and paste desired code with back 3 ticks ```javascript place code in
 ### Nsikak Udoh
 
 ### Corey Lott
+
+Thank you all GA instructors, GA fellows and friends for your help, advice and directions in this project!!
