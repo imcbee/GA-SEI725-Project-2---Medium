@@ -57,35 +57,43 @@ We will get pictures of the finished website and display here
 
 
 ## Tech Stack:<a name="techstack"></a>
-#### HTML, CSS
+### Vanilla HTML and CSS
 HTML was used to structure and organize the containers, elements, forms, buttons and other tags on EJS files.  Partials were also made to simplify web page elements (i.e. navbar) and grant access to user privileges (i.e. comment section).
 
-#### JavaScript
+### JavaScript
 JavaScript was used on EJS files to give funtionality on the index and show pages by displaying articles and comments.  It also gave functionality to our user stories like the random "Start Reading" button and the read time algorithm.
 
-#### Node.js
+### Node.js and Express
+Node.js was used as the back-end environment while Express was the framework to build our web application.
 
-#### Express
+### Mongoose and MongoDB
+MongoDB was used as our NoSQL database storage and mongoose served to connect the Node.js environment with MongoDB by translating and representing data relationships along with schema validation.
 
-#### Postman
-
-#### MongoDB
-
-#### Mongoose
-
+### Postman
+Postman was used as a tool to make sure establish routes were functioning properly and that database documents were correctly relating to other database documents.
 
 
 
-...
 ## Coding Challenges:<a name="codingchallenges"></a>
 
+
+
+Please copy and paste desired code with back 3 ticks `place code in here `
+
+
 ## Future Steps:
+* Medium employs complex dynamic features when creating a blog post.  It would be a great goal to be able to make the create page more dynamic in adding text with DOM manipulation to make a more responsive page.
+* Importing a picture from a local machine storage would be a better user experience or story if the user's desired picture was not readily available online.  This could be added on the article create route form.
+* Adding the user's other social media on the blog post would be easily achieve in modifying the user's schema to accept a URL link of their socia media accounts (i.e. Linkedin, Twitter, Facebook).
+* Allowing for sub-comments on the comment section for the author or other users to dialog with each other would increase interactivity.  This would require an embedded property for reviews schema that would take multiple comments.
+
+
 
 ## Support:
 
 ## Contributions:
 ### Ian McBee
-    Backend Development and Front-End Development
+* Backend Development and Front-End Development
 
 ### Nsikak Udoh
 
