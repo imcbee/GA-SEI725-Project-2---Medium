@@ -1,5 +1,4 @@
-// Routes: for non-logged in users
-    //things only for non-users
+// Routes for non-logged in users
 const routes = [
     { href: "/", title: "Home"},
     { href: "/ourstory", title: "Our Story"},
@@ -7,10 +6,8 @@ const routes = [
     { href: "/user/register", title: "Register" },
 ];
 
-// Auth Routes: logged users
-    //write
-    //review
-    //login, register
+// Auth Routes for logged users
+
 const authRoutes = [
     { href: "/", title: "Home"},
     { href: "/ourstory", title: "Our Story"},
@@ -18,6 +15,7 @@ const authRoutes = [
     { href: "/user/logout", title: "Logout" },
 ];
 
+// Determines which routes to display
 let navLinks = function navLinks(req, res, next) {
     if (req.session.currentUser) {
          res.locals.routes = authRoutes;
