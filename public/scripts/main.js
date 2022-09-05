@@ -1,8 +1,9 @@
-// const readingTime = document.querySelector('.postMeta');
 
-// readingTime.addEventListener('load', () => {
-//     const random = (min, max) => {return Math.floor(Math.random() * (max - min)) + min};
-//     readingTime.innerText = `▪ ${random(12, 20)} min read`
-// })
+const toggleButton = document.getElementsByClassName('toggle-button')[0]
+const navbarLinks = document.getElementsByClassName('navbar-links')[0]
+
+toggleButton.addEventListener('click', () => {
+    navbarLinks.classList.toggle('active')
+})
 
 
