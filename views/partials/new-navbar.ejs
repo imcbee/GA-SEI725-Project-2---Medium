@@ -2,15 +2,18 @@
     <div class="logoArea"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1770 1000">   <circle cx="500" cy="500" r="500"/>   <ellipse ry="475" rx="250" cy="501" cx="1296"/>   <ellipse cx="1682" cy="502" rx="88" ry="424"/><span><h1>Medium</h1></span></svg></div>
     <ul>
         <div class="navbar-menu navbar-end">
+            
+            
             <!-- user avatar -->
             <% if (user) { %>
                 <p class="navbar-item"><%= user.username %></p>
-                <img src="<%= user.avatar%>" alt="user image"width="30" height="30">
+                <img src="<%= username[0].avatar%>"  alt="user image" width="50" height="50">
             <% } %>
             <!-- routes -->
             <% if (routes) { %> <% routes.forEach((route) => { %>
                 <li><a class="navbar-item" href="<%= route.href %>"> <%= route.title %> </a></li>
-                <% }) %> <% } %>
+                <% }) %> 
+            <% } %>
         </div>
        
        

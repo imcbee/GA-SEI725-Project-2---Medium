@@ -18,9 +18,10 @@ router.post('/:id', async (req, res, next) => {
         const newReview = await db.Reviews.create({
             rating: req.body.rating,
             content: req.body.content,
-            articles: req.params.id
+            articles: req.params.id,
+            user: req.session.currentUser.id
         });
-        //console.log(newReview)
+        
         res.redirect(`/${req.params.id}`)
     }catch(err){
         console.log(err);
@@ -30,18 +31,22 @@ router.post('/:id', async (req, res, next) => {
 })
 
 // Show Route
-//!  How to show user's list of comments?
 router.get('/:id/', async (req, res, next) => {
     //res.send("hello hello hello")
 
     try{
         const articleReview = await db.Reviews.findById(req.params.id)
         const article = await db.Articles.findById(req.params.id)
-        const context = {reviews: articleReview, article: article, username: req.session.currentUser.username}
+        const userSession = await db.User.find(req.session.currentUser)
+        const context = {
+            reviews: articleReview,
+            article: article,
+            username: userSession, 
+            routes: res.locals.routes
+        }
 
         
-        // console.log(articleReview)
-        // console.log(article)
+        
         res.render('reviews/show.ejs', context)
         
         
@@ -56,10 +61,8 @@ router.get('/:id/', async (req, res, next) => {
 
 // Destroy Route
 router.delete('/:id', async (req, res, next) => {
-    //res.send('delete review')
 
     try{
-        //console.log(req.params.id)
         const foundReview = await db.Reviews.findByIdAndDelete(req.params.id)
         return res.redirect('/')
     }catch(err) {
@@ -71,13 +74,18 @@ router.delete('/:id', async (req, res, next) => {
 
 // Edit Route
 router.get('/:id/edit', async (req, res, next)=>{
-    //res.send('oh my my my')
     
     try{
         const newReview = await db.Reviews.findById(req.params.id)
-        // console.log(req.params.id)
-        // console.log(newReview)
-        res.render('reviews/edit.ejs', {reviews: newReview, id: newReview._id, username: req.session.currentUser.username});
+        const userSession = await db.User.find(req.session)
+        const context = {
+            username: userSession, 
+            routes: res.locals.routes,
+            reviews: newReview, 
+            id: newReview._id,
+        }
+        
+        res.render('reviews/edit.ejs', context);
     }catch(err) {
         console.log(err);
         res.redirect('/404');
@@ -87,7 +95,6 @@ router.get('/:id/edit', async (req, res, next)=>{
 
 // Update Route
 router.put('/:id', async (req, res, next) => {
-    //res.send('hi')
     
     try{
         const updatedReview = req.body;
