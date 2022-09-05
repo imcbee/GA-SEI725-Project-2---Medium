@@ -15,8 +15,8 @@ router.get('/login', async (req, res, next) => {
     const context = {
         username: userSession, 
         routes: res.locals.routes
-    }
-    res.render('user/login.ejs', context)
+    };
+    res.render('user/login.ejs', context);
 });
 
 // Registration Page
@@ -25,8 +25,8 @@ router.get('/register', async (req, res, next) => {
     const context = {
         username: userSession, 
         routes: res.locals.routes
-    }
-    res.render('user/register.ejs', context)
+    };
+    res.render('user/register.ejs', context);
     
 });
 
@@ -40,7 +40,6 @@ router.post('/login', async (req, res, next) => {
             return res.redirect('/user/register');
         }else {
             const match = await bcrypt.compare(formData.password, foundUser.password);
-            console.log(match)
             if(!match) return res.send('Email or Password does not match!');
             
             req.session.currentUser = {
@@ -49,13 +48,12 @@ router.post('/login', async (req, res, next) => {
             };
 
             res.redirect('/');
-        }
-
+        };
     }catch(err){
         console.log(err);
         res.redirect('/404');
         return next();
-    }
+    };
 });
 
 // Post Route for Registration Page
@@ -65,7 +63,7 @@ router.post('/register', async (req, res, next) => {
         let foundUser = await db.User.exists({email: formData.email});        
 
         if(foundUser) return res.redirect("/user/login");
-        let rounds = parseInt(process.env.SALT_ROUNDS)
+        let rounds = parseInt(process.env.SALT_ROUNDS);
         let salt = await bcrypt.genSalt(rounds);
         let hash = await bcrypt.hash(formData.password, salt);
 
@@ -73,12 +71,11 @@ router.post('/register', async (req, res, next) => {
 
         await db.User.create(formData);
         return res.redirect('/user/login');
-
     }catch(err){
         console.log(err);
         res.redirect('/404');
-        return next()
-    }
+        return next();
+    };
 });
 
 // Logout Page
@@ -90,7 +87,7 @@ router.get('/logout', async (req, res, next) => {
         console.log(err);
         res.redirect('/404');
         return next();
-    }
+    };
 });
 
 

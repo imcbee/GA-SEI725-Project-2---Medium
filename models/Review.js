@@ -21,7 +21,7 @@ const reviewSchema = new mongoose.Schema({
         ref: 'User',
     }
     
-}, { timestamps: true })
+}, {timestamps: true});
 
 const Review = mongoose.model('Review', reviewSchema);
 
