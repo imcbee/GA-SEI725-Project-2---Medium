@@ -12,6 +12,7 @@ const {articles, reviews, user} = require('./controllers');
 
 // App Configuration
 const app = express();
+//const PORT = process.env.PORT || 4000
 const port = 8080;
 
 // Middleware
@@ -31,7 +32,7 @@ app.use(
             maxAge: 1000 * 60 * 60 * 24 * 7 * 2
         },
     })
-    );
+);
 
 
 /* SECTION Middleware */
