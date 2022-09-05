@@ -19,8 +19,6 @@ router.get('/ourstory', async(req, res, next) => {
     res.render('ourstory.ejs', context);
 });
 
-
-
 // New Route
 router.get('/new', async (req, res) => {
     const userSession = await db.User.find(req.session.currentUser);

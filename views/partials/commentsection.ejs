@@ -1,21 +1,14 @@
+<!-- If user is logged in -->
 <% if(user) {%>
  <!-- New like button  -->
 <div class="votebutton" >
     <form action="/<%= articles._id%>?_method=PUT" method="POST">
         <input hidden value="<%= articles.vote + 1 %>" name="vote">
-        <span class="vote-total"><%= articles.vote%> Likes</span>
-        <button class="vote"><span id="icon"><i class="fa-regular fa-thumbs-up"></i></i></span></button>
+        <button class="like_btn"><span id="icon"><span class="vote-total"><%= articles.vote%> Likes </span><i class="fa-regular fa-thumbs-up"></i></i></span></button>
     </form>
 </div>
 
-<!-- Old like button  -->
-<button class="like_btn">
-    <span id="icon"><i class="fa-regular fa-thumbs-up"></i></i></span>
-    <span id="count">0</span> Like 
-</button>
-
-<!-- Form for new comment -->
-
+<!-- Comments -->
 <div class="comments-container">
     <h3>Write your comments below:</h3>
     <form class="" action="/reviews/<%= articles._id%>" method="POST">
@@ -33,10 +26,6 @@
     </form>
 </div>
 
-<!-- Comment Section -->
-
-<!-- <h3>Comments Section:</h3> -->
-
 <% reviews.forEach((element, idx) => {%>
     <div class="comments-container">
         <div class="comment-rating">
@@ -45,8 +34,6 @@
         </div>
     </div>
 <% });%>
-
-
 
 <% } else{ %>
     

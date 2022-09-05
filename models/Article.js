@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 // Schema for the Articles with export
 const articleSchema = new mongoose.Schema(
   {

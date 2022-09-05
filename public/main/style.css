@@ -94,6 +94,27 @@ nav ul li a {
     margin: 20px;
 }
 
+/* Links */
+a:link {
+    color: black;
+    text-decoration: none;
+}
+
+a:visited {
+    color: black;
+}
+
+a:hover {
+    color: none;
+}
+
+a:active {
+    color: none;
+}
+
+/* End of Links */
+
+
 svg {
     width: 90px; ;
     height: 110px;
@@ -134,14 +155,15 @@ span h1 {
 }
 
 .btn {
+    font-family: 'Oswald';
+    color: whitesmoke;
     min-width: 150px;
     text-align: center;
     display: inline-block;
-    color: #fff;
-    background-color: #000;
     padding: 10px;
     border-radius: 30px;
     text-decoration: none;
+    box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, .8);
 }
 
 hr{
@@ -313,26 +335,6 @@ img{
 .ourstory-link {
     text-align: center;
 }
-
-/* Links */
-a:link {
-    color: black;
-    text-decoration: none;
-}
-
-a:visited {
-    color: none;
-}
-
-a:hover {
-    color: none;
-}
-
-a:active {
-    color: none;
-  }
-
-/* End of Links */
 
 /* registation  */
 .logoPic {
@@ -618,4 +620,12 @@ legend {
     .navbar-links.active {
         display: flex;
     }
+}
+
+#list-item {
+    color: black;
+}
+
+#edit-button {
+    color: white;
 }

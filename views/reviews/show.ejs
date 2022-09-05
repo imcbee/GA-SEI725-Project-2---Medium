@@ -7,8 +7,6 @@
 
     <%- include("../partials/new-navbar", {user: user, username: username})%>
 
-    <% reviews%>
-
     <div class="comment-rating">
         <h2>Rating: <%=reviews.rating %> </h2>
     </div>
@@ -19,7 +17,7 @@
     </div>
 
     <div>
-        <a href="/reviews/<%=reviews._id%>/edit " >Edit Comment</a>
+        <a class="button" id="edit-button" href="/reviews/<%=reviews._id%>/edit " >Edit Comment</a>
     </div>
 
     <div class="delete-review-container">
