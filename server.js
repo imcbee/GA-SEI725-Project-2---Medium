@@ -42,7 +42,7 @@ app.use((req, res, next) => {
     next();
 });   
 app.use(navLinks); 
-   
+
 app.use('', articles);
 app.use('/reviews', reviews);
 app.use('/user', user);
@@ -54,6 +54,6 @@ app.get('*', (req, res) => {
 })
 
 // SERVER
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
     console.log(`Server is listening on port ${port}.`)
 })
