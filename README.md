@@ -123,6 +123,10 @@ router.get('/:id', async (req ,res, next) => {
     };
 });
 ```
+Index Page: The Start Reading button will pick an Article at random and allow any user or non-user to immediately start reading. Great for those who are not picky and just want some good content.
+```javascript
+<div class="btn btn-regualar"><a class="reading-start" href="/<%= articles[Math.floor(Math.random() * articles.length)]._id%>">Start Reading</a></div>
+```
 
 Please copy and paste desired code with back 3 ticks 
 ```javascript 
@@ -151,5 +155,6 @@ next email\
 ### Nsikak Udoh
 
 ### Corey Lott
+* Backend and Front-End Development
 
 Thank you all GA instructors, GA fellows and friends for your help, advice and directions in this project!!
