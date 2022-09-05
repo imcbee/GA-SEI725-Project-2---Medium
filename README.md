@@ -139,7 +139,7 @@ place code in here
 
 
 ## Support:
-Please contact one of the following emails below for questions or support:  
+Please contact one of the following emails below for questions on support:  
 imcbee@terpmail.umd.edu\
 next email\
 next email\
