@@ -7,7 +7,6 @@ const routes = [
     { href: "/user/register", title: "Register" },
 ];
 
-
 // Auth Routes: logged users
     //write
     //review

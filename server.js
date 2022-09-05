@@ -20,7 +20,6 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(methodOverride('_method'));
 
-
 app.use(
     session({
         store: MongoStore.create({ mongoUrl: process.env.MONGODB_URL }),
@@ -34,7 +33,6 @@ app.use(
     })
 );
 
-
 /* SECTION Middleware */
 app.use((req, res, next) => {
     res.locals.user = req.session.currentUser;
@@ -46,7 +44,6 @@ app.use(navLinks);
 app.use('', articles);
 app.use('/reviews', reviews);
 app.use('/user', user);
-
 
 // 404 Route
 app.get('*', (req, res) => {
