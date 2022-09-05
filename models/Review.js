@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// Schema for Reviews with export
 const reviewSchema = new mongoose.Schema({
     rating: {
         type: Number,
