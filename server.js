@@ -8,19 +8,15 @@ const navLinks = require('./navLinks');
 
 // Controller Imports
 const {articles, reviews, user} = require('./controllers');
-//const controller = require('./controllers/articles_controller')
 
 // App Configuration
 const app = express();
-//const PORT = process.env.PORT || 4000
 const port = 8080;
 
 // Middleware
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(methodOverride('_method'));
-
-
 app.use(
     session({
         store: MongoStore.create({ mongoUrl: process.env.MONGODB_URL }),
@@ -38,11 +34,10 @@ app.use(
 /* SECTION Middleware */
 app.use((req, res, next) => {
     res.locals.user = req.session.currentUser;
-    //console.log(`HERE HERE HERE HERE!!!!!!  ${req.session}`)
     next();
-});   
-app.use(navLinks); 
+}); 
 
+app.use(navLinks); 
 app.use('', articles);
 app.use('/reviews', reviews);
 app.use('/user', user);
@@ -51,9 +46,9 @@ app.use('/user', user);
 // 404 Route
 app.get('*', (req, res) => {
     res.render('404.ejs')
-})
+});
 
 // SERVER
 app.listen(process.env.PORT || port, () => {
     console.log(`Server is listening on port ${port}.`)
-})
+});
