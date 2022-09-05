@@ -1,6 +1,7 @@
 require('../config/db.connection');
 const db = require('./index');
 
+// Seed Data
 const articles = [
     {
         author: 'Charlotte Hu',
@@ -31,18 +32,5 @@ const articles = [
     },
 ];
 
-// async function reloadData() {
-// 	try {
-// 		let deleted = await db.Articles.deleteMany({});
-// 		console.log(deleted)
-		
-// 		let reloading = await db.Articles.insertMany(articles);
-// 		console.log(reloading)
-// 	} catch (err) {
-// 		console.log(err);
-// 	}
-// }
-
-// reloadData();
 
 module.exports = articles;
