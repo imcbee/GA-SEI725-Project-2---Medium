@@ -4,18 +4,22 @@
     <%-  include('partials/head', {page: articles.title}) %> 
 <body>
     <%- include('./partials/new-navbar', {user: user, username: username, articles: articles}) %>
-    <hr>
+    
+    <hr> <!-- Horizontal Line-->
+    <!-- Hero Banner starts -->
         <section class="heroBanner"> 
             <div class="container"> 
                 <div class="herotitle">Stay Curious.</div>
                 <div class="subtitle">Discover stories, thinking, and expertise from writers on any topic.</div>
+                <!-- Button to select random article -->
                 <div class="btn btn-regualar"><a href="/<%= articles[Math.floor(Math.random() * articles.length)]._id%>">Start Reading</a></div>
             </div>
         </section>
-    <hr>
+    <!-- Hero Banner ends -->
+    <hr> <!-- horizontal line -->
 
-    
-    
+
+<!-- Start function for read time -->
 
 <% function wordCount(str) {%>
     <%let words = 0; %>
@@ -29,6 +33,10 @@
 
     <%return readTime; %>
 <% };%>
+
+<!-- End function for read time -->
+
+<!-- Start Show all articles section  -->
 
     <section class="container">
         <div class="">
@@ -55,6 +63,6 @@
             <% }); %> 
         </div>
     </section>
-
+<!-- End show all articles section -->
 </body>
 </html>
