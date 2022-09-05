@@ -11,9 +11,18 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between; 
-    /* used this to avoid using container class */
-    /* padding-left: 320px;
-    padding-right: 320px; */
+}
+
+input {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+}
+
+textarea {
+    resize: none;
+    height: 75px;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
 }
 
 nav ul{
@@ -411,11 +420,7 @@ legend {
     background: black;
     transition: 0.4s ease-in-out;
 }
-  
-textarea {
-    resize: none;
-    height: 75px;
-}
+
 /* end of registration */
 
 /* Login */
@@ -494,6 +499,7 @@ textarea {
     font-family: "Oswald";
     font-weight: bold;
     text-align: center;
+    font-size: 30px;
 }
 
 .new-container {
@@ -526,6 +532,7 @@ textarea {
 }
 
 .new-label {
+    font-size: 22px;
     font-weight: 600;
 }
 

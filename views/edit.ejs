@@ -7,29 +7,35 @@
 
         <%- include('./partials/new-navbar', {user: user}) %>
 
+        <section>
+            <div>
+              <h1 class="title-new">Edit Story</h1>
+            </div>
+          </section>
+
         <form action="/<%= articles._id%>?_method=PUT" method="POST">
             <div>
-                <label>Article Title</label>
-                <input class="input" type="text" placeholder="Article Title" name="title" value="<%= articles.title %> "/>
+                <label class="new-label">Article Title</label>
+                <input class="new-input" type="text" placeholder="Article Title" name="title" value="<%= articles.title %> "/>
             </div>
         
             <div>
-                <label>Article Author</label>
-                <input class="input" type="text" placeholder="Article Author" name="name" value="<%= articles.author %> "/>
+                <label class="new-label">Article Author</label>
+                <input class="new-input" type="text" placeholder="Article Author" name="name" value="<%= articles.author %> "/>
             </div>
         
             <div>
-                <label>Article Image</label>
-                <input class="input" type="text" placeholder="Article Author" name="url" value="<%= articles.image %> "/>
+                <label class="new-label">Article Image</label>
+                <input class="new-input" type="text" placeholder="Article Author" name="url" value="<%= articles.image %> "/>
             </div>
 
             <div>
-                <label>Article Text</label>
-                <textarea name="text" id="text" cols="100" rows="50"></textarea>
+                <label class="new-label">Article Text</label>
+                <textarea class="new-textarea" name="text" id="text" cols="100" rows="50"></textarea>
             </div>
             
             <div>
-                <input type="submit" value="Edit Article">
+                <input class="new-button" type="submit" value="Edit Article">
             </div>
         </form>
         
