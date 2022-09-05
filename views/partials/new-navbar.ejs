@@ -28,7 +28,7 @@
             <!-- routes -->
             <% if (routes) { %> 
                 <% routes.forEach((route) => { %>
-                <li><a class="navbar-item" href="<%= route.href %>"> <%= route.title %> </a></li>
+                <li><a class="navbar-item" id="list-item" href="<%= route.href %>"> <%= route.title %> </a></li>
                 <% }) %> 
             <% } %>
 
