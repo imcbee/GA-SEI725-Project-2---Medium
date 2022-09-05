@@ -3,7 +3,7 @@
 
 <%- include("../partials/head")%>
 <body>
-    <%- include('../partials/new-navbar', {user: user}) %>
+    <%- include('../partials/new-navbar', {user: user, username: username}) %>
     
     <!-- ============= CONTAINER ============== -->
     <div class="register-container">
@@ -23,22 +23,17 @@
               <!-- username -->
               <label class="reg-label" for="username">USERNAME</label>
               <input class="reg-input" name="username" class="input" type="username"/>
-              <!-- password -->
-              <label class="reg-label" for="password">PASSWORD</label>
-              <input class="reg-input" name="password" class="input" type="password" />
               <!-- email -->
               <label class="reg-label" for="email">E-MAIL</label>
               <input class="reg-input" name="email" class="input" type="email"/>
+              <!-- password -->
+              <label class="reg-label" for="password">PASSWORD</label>
+              <input class="reg-input" name="password" class="input" type="password" />
               <!-- avatar picture -->
               <div class="field">
-              <label class="label">User Picture</label>
+                <label class="reg-label">User Picture</label>
               <div class="control">
-                <input
-                  name="avatar"
-                  class="input"
-                  type="text"
-                  placeholder="http://"
-                />
+                <input class="reg-input" name="avatar" type="text" placeholder="http://"/>
               </div>
             </div>
           </fieldset>

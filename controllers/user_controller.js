@@ -12,15 +12,21 @@ router.use(express.urlencoded({ extended: false }));
 // Login Page
 router.get('/login', async (req, res, next) => {
     const userSession = await db.User.find(req.session.currentUser);
-    const context = {user: userSession, routes: res.locals.routes}
-    res.render('user/login.ejs', context)
+    const context = {
+        username: userSession, 
+        routes: res.locals.routes
+    };
+    res.render('user/login.ejs', context);
 });
 
 // Registration Page
 router.get('/register', async (req, res, next) => {
     const userSession = await db.User.find(req.session.currentUser);
-    const context = {user: userSession, routes: res.locals.routes}
-    res.render('user/register.ejs', context)
+    const context = {
+        username: userSession, 
+        routes: res.locals.routes
+    };
+    res.render('user/register.ejs', context);
     
 });
 
@@ -34,7 +40,6 @@ router.post('/login', async (req, res, next) => {
             return res.redirect('/user/register');
         }else {
             const match = await bcrypt.compare(formData.password, foundUser.password);
-            console.log(match)
             if(!match) return res.send('Email or Password does not match!');
             
             req.session.currentUser = {
@@ -43,41 +48,34 @@ router.post('/login', async (req, res, next) => {
             };
 
             res.redirect('/');
-        }
-
+        };
     }catch(err){
         console.log(err);
         res.redirect('/404');
         return next();
-    }
+    };
 });
 
 // Post Route for Registration Page
 router.post('/register', async (req, res, next) => { 
     try{
-        //console.log(req.body)
         let formData = req.body;
-        let foundUser = await db.User.exists({email: formData.email});
-        //console.log(foundUser)
-        
+        let foundUser = await db.User.exists({email: formData.email});        
 
         if(foundUser) return res.redirect("/user/login");
-        let rounds = parseInt(process.env.SALT_ROUNDS)
+        let rounds = parseInt(process.env.SALT_ROUNDS);
         let salt = await bcrypt.genSalt(rounds);
-        //console.log(salt)
         let hash = await bcrypt.hash(formData.password, salt);
 
         formData.password = hash;
 
         await db.User.create(formData);
-        //console.log(`My hash is ${hash}`)
         return res.redirect('/user/login');
-
     }catch(err){
         console.log(err);
         res.redirect('/404');
-        return next()
-    }
+        return next();
+    };
 });
 
 // Logout Page
@@ -89,9 +87,7 @@ router.get('/logout', async (req, res, next) => {
         console.log(err);
         res.redirect('/404');
         return next();
-    }
+    };
 });
-
-
 
 module.exports = router;

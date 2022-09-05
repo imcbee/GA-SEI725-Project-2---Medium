@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-
+// Schema for Users with export
 const userSchema = new mongoose.Schema({
     email: {
         type: String,
@@ -18,18 +18,17 @@ const userSchema = new mongoose.Schema({
     },
     avatar: {
         type: String,
-        default:
-            "https://picsum.photos/200/300.jpg",
+        default: "https://www.w3schools.com/howto/img_avatar.png",
     }, 
     reviews: { 
         type: mongoose.Types.ObjectId, 
         ref: 'Review' 
     },
-    articles: {
+    articles: [{
         type: mongoose.Types.ObjectId,
         ref: 'Article'
-    },
-}, { timestamps: true });
+    }],
+}, {timestamps: true});
 
 const User = mongoose.model('User', userSchema);
 

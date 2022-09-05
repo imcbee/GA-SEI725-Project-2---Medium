@@ -5,23 +5,22 @@
 
 <body>
     
-    <%- include("../partials/navbar")%>
+    <%- include("../partials/new-navbar", {user: user, username: username})%>
 
     <form action="/reviews/<%= reviews._id%>?_method=PUT" method="POST">
         <div>
-            <label>Comment Rating</label>
-            <input class="input" type="number" placeholder="0-5" name="rating" value="<%= reviews.rating %> "/>
+            <label class="new-label">Comment Rating</label>
+            <input class="new-input" type="number" placeholder="0-5" name="rating" value="<%= reviews.rating %> "/>
         </div>
 
         <div>
-            <label>Comment Text</label>
-            <textarea name="content" id="content" cols="30" rows="10" placeholder="Write Comment here"></textarea>
+            <label class="new-label">Comment Text</label>
+            <textarea class="new-textarea" name="content" id="content" cols="30" rows="10" placeholder="Write Comment here"></textarea>
         </div>      
             
         <div>
-            <input type="submit" value="Edit Comment">
+            <input class="button" id="edit-button" type="submit" value="Edit Comment">
         </div>
-        
     </form>
         
 </body>

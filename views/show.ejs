@@ -2,35 +2,46 @@
 <html lang="en">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<!-- Global website information -->
 
-    <%- include('partials/show-head') %>
+<%- include('partials/show-head') %>
 
 <body>
-
-
-    <%- include('./partials/new-navbar', {user: user}) %>
-
+    <!-- Global Nav Bar -->
+    <%- include('./partials/new-navbar', {user: user, username: username, articles: articles}) %>
+    
     <main class="container mainContent">
-
         <section class="contentArea">
             <div class="postHeader"> 
-                <div class="postMeta"> 
+                <div class="postMeta">
+                    
+                    <!-- Show page global header starts -->
+
                     <div class="authorBox">
                         <div class="authorImage"><img src="<%=articles.image%>" alt=""></div>
                         <div class="ahuthorData"><small>Author: <%=articles.author %> </small> <br>
-                            <!-- <small>date: <%= articles.publishDate.toLocaleDateString('en-US') %> </small> -->
                             <small>Date: <%= articles.publishDate %> </small>    
                         </div>
                     </div>
+
+                    <!-- Show page global header ends -->
+                    
+                    <!-- Social Share icon starts-->
+
                     <div class="socialShare"> 
                         <ul class="socialShareList">
-                            <li><a href="#" class="fa fa-facebook"></a></li>
-                            <li><a href="#" class="fa fa-twitter"></a></li>
-                            <li><a href="#" class="fa-brands fa-linkedin-in "></a></li>
-                            <li><a href=""></a></li>
+                            <li><a href="https://www.facebook.com"target="_blank" class="fa fa-facebook"></a></li>
+                            <li><a href="https://www.twitter.com" target="_blank" class="fa fa-twitter"></a></li>
+                            <li><a href="https://www.linkedin.com" target="_blank" class="fa-brands fa-linkedin-in"></a></li>
+                            <li><a href="https://www.instagram.com" target="_blank" class="fab fa-instagram"></a></li>
                         </ul>
                     </div>
                 </div>
+                
+                <!-- Social Share icons ends -->
+
+                <!-- Article starts -->
+
                 <article>
                 
                     <h2 class="title"><%=articles.title %> </h2>
@@ -42,71 +53,14 @@
                     </div>
                  </article>
 
-
-        
-        <!-- Edit and Delete Section -->
+                 <!-- Article ends -->
 
 
-          <!-- like button  -->
-
-        <button class="like_btn">
-            <span id="icon"><i class="fa-regular fa-thumbs-up"></i></i></span>
-            <span id="count">0</span> Like 
-        </button>
-        
-        <!-- Form for new comment -->
-
-        <div class="comments-container">
-            <h3>Write your comments below:</h3>
-            <form class="" action="/reviews/<%= articles._id%>" method="POST">
-                <div class="form-rating">
-                  <label for="rating"></label>
-                  <input class="form-rating" type="number" placeholder="Rate this article: 0-5" name="rating" id="rating"/>
-                </div>
-      
-                <div class="">
-                  <label for="content"></label>
-                  <textarea class="form-content" name="content" id="content" cols="30" rows="10"placeholder="Write your comment here"></textarea>
-                </div>
-      
-                <button type="submit" class="btn-sec">Submit comment</button>
-            </form>
-        </div>
-        
-        <!-- Comment Section -->
-
-        <!-- <h3>Comments Section:</h3> -->
-
-        <% reviews.forEach((element, idx) => {%>
-            <div class="comments-container">
-                <div class="comment-rating">
-                    <h3>Rating: <%= element.rating%></h3>
-                    <p class="comment-section"> <a href="/reviews/<%= element._id%>"><%= element.content%></a></p>
-                </div>
-            </div>
-        <% });%>
-        
-       
-       
-        <!-- Edit and Delete Section -->
-
-
-        <div>
-            <a href="/<%=articles._id%>/edit " >Edit Article</a>
-        </div>
-
-        <div>
-            <p class="control">
-                <form action="/<%=articles._id%>?_method=DELETE" method="POST">
-                    <input class='button is-danger' type="submit" value="Delete Article"/>
-                </form>
-            </p>
-            
-        </div>
-        </div>
-        
-
+        <!-- ! New Comment Section Area -->
+        <%- include('./partials/commentsection') %>
+        <%if(typeof user !== 'undefined' && articles.user.toString() === user.id) { %>
+            <%- include('./partials/editdelete') %>
+        <% }%>
     </main>
-
 </body>
 </html>

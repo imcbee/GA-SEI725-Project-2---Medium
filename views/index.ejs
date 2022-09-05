@@ -3,57 +3,70 @@
 <!-- head -->
     <%-  include('partials/head', {page: articles.title}) %> 
 <body>
-    <%- include('./partials/new-navbar', {user: user}) %>
-    <hr>
-    <section class="heroBanner"> 
-        <div class="container"> 
-            <div class="herotitle">Stay Curious.</div>
-            <div class="subtitle">Discover stories, thinking, and expertise from writers on any topic.</div>
-            <div class="btn btn-regualar"><a href="/<%= articles[Math.floor(Math.random() * articles.length)]._id%>">Start Reading</a></div> 
-        </div>
-    </section>
-    <hr>
-
-  
-     
+    <%- include('./partials/new-navbar', {user: user, username: username, articles: articles}) %>
     
+    <hr> <!-- Horizontal Line-->
+    <!-- Hero Banner starts -->
+        <section class="heroBanner"> 
+            <div class="container"> 
+                <div class="herotitle">Stay Curious.</div>
+                <div class="subtitle">Discover stories, thinking, and expertise from writers on any topic.</div>
+<<<<<<< HEAD
+                <!-- Button to select random article -->
+                <div class="btn btn-regualar"><a href="/<%= articles[Math.floor(Math.random() * articles.length)]._id%>">Start Reading</a></div>
+=======
+                <div class="btn btn-regualar"><a class="reading-start" href="/<%= articles[Math.floor(Math.random() * articles.length)]._id%>">Start Reading</a></div>
+>>>>>>> 060bd48841e29164bce31725d47d6323f496b015
+            </div>
+        </section>
+    <!-- Hero Banner ends -->
+    <hr> <!-- horizontal line -->
+
+
+<!-- Start function for read time -->
+
+<% function wordCount(str) {%>
+    <%let words = 0; %>
+    
+    <%for(let i=0; i<str.length; i++) {%>
+        <%if(str[i] === ' ') words++ %>
+    <% };%>
+        
+    <%let readTime = Math.floor(words / 238); %>
+    <%if(readTime < 1) return 1; %>
+
+    <%return readTime; %>
+<% };%>
+
+<!-- End function for read time -->
+
+<!-- Start Show all articles section  -->
+
     <section class="container">
         <div class="">
 
             <h2 class="title">All Articles</h2>
         </div>
         <div class="postGrids three-col">
-            <% for (let i = 0; i < articles.length; i++){ %> 
-                <% const firstArticle = articles[i] %>
+            <% articles.forEach((element, idx) => {  %> 
+                
             <div class="grid">
-                <div class="count">01</div>
+                <div class="count"><%= idx +1 %></div>
                 <div class="postItem">
-                    <div class="authorMeta"><img src="" alt="" class="authorImage">
-                        <span class="authorName"><%= firstArticle.author %> </span>
+                    <div class="authorMeta">
+                        <img src="<%= element.image%>" alt="Author Image" class="authorImage">
+                        <span class="authorName"><%= element.author %> </span>
                     </div>
 
                     <div class="postTitle">
-                        <a href="<%= firstArticle._id %> "><%=firstArticle.title %> </a>
+                        <a href="<%= element._id %> "><%=element.title %> </a>
                     </div>
-                    <div class="postMeta"><span class="date"><%= (new Date(firstArticle.publishDate)). toLocaleDateString('en-US') %> </span> ▪ 16 min read</div>
+                    <div class="postMeta"><span class="date"><%= (new Date(element.publishDate)).toLocaleDateString('en-US') %> </span>▪ <%= wordCount(element.text) %> min read</div>
                 </div>
-
             </div>
-            <% }; %> 
+            <% }); %> 
         </div>
     </section>
-
-    <!-- <main class="container">
-        <div>
-            <% articles.forEach((element, idx) => { %>
-                <a href="/<%= element._id %> "><%=element.title %> </a>
-                <div>
-                    <%= element.text %> 
-                </div>
-            <% });%>
-            
-        </div>
-    </main> -->
-    
+<!-- End show all articles section -->
 </body>
 </html>

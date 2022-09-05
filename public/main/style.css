@@ -9,20 +9,27 @@ nav {
     margin: 0;
     overflow: hidden;
     display: flex;
-    align-self: flex-end;
+    align-items: center;
     justify-content: space-between; 
-    /* used this to avoid using container class */
-    padding-left: 320px;
-    padding-right: 320px;
+}
+
+input {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+}
+
+textarea {
+    resize: none;
+    height: 75px;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
 }
 
 nav ul{
     margin: 0;
     padding: 0;
     display: flex;
-    /* flex-direction: row; */
-    align-self: center; /* centers li */
-    /* justify-content: space-around; */
+    align-self: center;
 }
 
 nav ul li {
@@ -33,9 +40,45 @@ nav ul li {
 nav ul li a {
     color: black;
     display: block;
-    line-height: 3em;
-    padding: 1em 1em;
+    padding: 1rem;
     text-decoration: none;
+}
+
+.navbar-item {
+    margin: 0;
+    padding: 16px;
+}
+
+.user-avatar {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.avatar-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.toggle-button {
+    position: absolute;
+    top: .75rem;
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
+
+.toggle-button .bar {
+    height: 3px;
+    width: 100%;
+    background-color: black;
+    border-radius: 10px;
 }
 
 .button{
@@ -50,6 +93,27 @@ nav ul li a {
     font-size: 16px;
     margin: 20px;
 }
+
+/* Links */
+a:link {
+    color: black;
+    text-decoration: none;
+}
+
+a:visited {
+    color: black;
+}
+
+a:hover {
+    color: none;
+}
+
+a:active {
+    color: none;
+}
+
+/* End of Links */
+
 
 svg {
     width: 90px; ;
@@ -91,14 +155,15 @@ span h1 {
 }
 
 .btn {
+    font-family: 'Oswald';
+    color: whitesmoke;
     min-width: 150px;
     text-align: center;
     display: inline-block;
-    color: #fff;
-    background-color: #000;
     padding: 10px;
     border-radius: 30px;
     text-decoration: none;
+    box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, .8);
 }
 
 hr{
@@ -129,6 +194,19 @@ hr{
     font-size: 20px;
     font-weight: bold;
     color: black;
+}
+
+.count{
+    font-size: 21px;
+    font-weight: bolder;
+    padding: 25px;
+    margin: 50px;
+    background-color: whitesmoke;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    filter: drop-shadow(0px 10px 3px grey);
+
 }
 
 /* Single Post Design  */
@@ -235,9 +313,6 @@ img{
     cursor: pointer;
 }
 
-
-
-
 .like_btn {
     padding: 10px 15px;
     background: #0080ff;
@@ -248,6 +323,17 @@ img{
     color: #e8efff;
     border-radius: 5px;
     cursor: pointer;
+}
+
+/* Our Story */
+.link-github {
+    font-family: "Oswald";
+    font-weight: bold;
+    text-align: center;
+
+}
+.ourstory-link {
+    text-align: center;
 }
 
 /* registation  */
@@ -351,11 +437,7 @@ legend {
     background: black;
     transition: 0.4s ease-in-out;
 }
-  
-textarea {
-    resize: none;
-    height: 75px;
-}
+
 /* end of registration */
 
 /* Login */
@@ -434,12 +516,13 @@ textarea {
     font-family: "Oswald";
     font-weight: bold;
     text-align: center;
+    font-size: 30px;
 }
 
 .new-container {
     width: 80vw;
     margin: 50px auto;
-    display: flex;
+    display: block;
 }
 
 .new-input {
@@ -466,6 +549,7 @@ textarea {
 }
 
 .new-label {
+    font-size: 22px;
     font-weight: 600;
 }
 
@@ -503,4 +587,45 @@ textarea {
 
 ::placeholder {
     text-align: center;
+}
+
+@media (max-width: 1268px) {
+    .toggle-button {
+        display: flex;
+    }
+
+    .navbar-links {
+        display: none;
+        width: 100%;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-links ul {
+        width: 100%;
+        flex-direction: row;
+    }
+
+    .navbar-links li {
+        text-align: center;
+    }
+
+    .navbar-menu li a {
+        padding: .5rem 1rem;
+    }
+
+    .navbar-links.active {
+        display: flex;
+    }
+}
+
+#list-item {
+    color: black;
+}
+
+#edit-button {
+    color: white;
 }

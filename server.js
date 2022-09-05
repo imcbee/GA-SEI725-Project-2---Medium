@@ -8,7 +8,6 @@ const navLinks = require('./navLinks');
 
 // Controller Imports
 const {articles, reviews, user} = require('./controllers');
-//const controller = require('./controllers/articles_controller')
 
 // App Configuration
 const app = express();
@@ -18,7 +17,6 @@ const port = 8080;
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(methodOverride('_method'));
-
 
 app.use(
     session({
@@ -31,28 +29,25 @@ app.use(
             maxAge: 1000 * 60 * 60 * 24 * 7 * 2
         },
     })
-    );
-
+);
 
 /* SECTION Middleware */
 app.use((req, res, next) => {
     res.locals.user = req.session.currentUser;
-    //console.log(`HERE HERE HERE HERE!!!!!!  ${req.session}`)
     next();
-});   
+}); 
+
 app.use(navLinks); 
-   
 app.use('', articles);
 app.use('/reviews', reviews);
 app.use('/user', user);
 
-
 // 404 Route
 app.get('*', (req, res) => {
     res.render('404.ejs')
-})
+});
 
 // SERVER
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
     console.log(`Server is listening on port ${port}.`)
-})
+});
