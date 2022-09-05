@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// Schema for Reviews Database
+// Schema for Reviews with export
 const reviewSchema = new mongoose.Schema({
     rating: {
         type: Number,
@@ -21,7 +21,7 @@ const reviewSchema = new mongoose.Schema({
         ref: 'User',
     }
     
-}, { timestamps: true });
+}, {timestamps: true});
 
 const Review = mongoose.model('Review', reviewSchema);
 

@@ -278,8 +278,6 @@ img{
     cursor: pointer;
 }
 
-
-
 .like_btn {
     padding: 10px 15px;
     background: #0080ff;
@@ -299,6 +297,9 @@ img{
     text-align: center;
 
 }
+.ourstory-link {
+    text-align: center;
+}
 
 /* Links */
 a:link {
@@ -317,6 +318,7 @@ a:hover {
 a:active {
     color: none;
   }
+
 /* End of Links */
 
 /* registation  */

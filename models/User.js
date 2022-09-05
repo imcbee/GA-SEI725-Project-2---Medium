@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// Schema for User Database
+// Schema for Users with export
 const userSchema = new mongoose.Schema({
     email: {
         type: String,
@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'Article'
     }],
-}, { timestamps: true });
+}, {timestamps: true});
 
 const User = mongoose.model('User', userSchema);
 

@@ -1,7 +1,7 @@
 require('../config/db.connection');
 const db = require('./index');
 
-// Seed Data
+// Temp database for testing purposes only
 const articles = [
     {
         author: 'Charlotte Hu',
