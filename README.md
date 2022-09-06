@@ -1,28 +1,21 @@
 # General Assembly SEI725 Project 2: Reverse Engineer Medium
 ---
+
 ```javascript
-          _____                    _____                    _____                    _____                    _____                    _____          
-         /\    \                  /\    \                  /\    \                  /\    \                  /\    \                  /\    \         
-        /::\____\                /::\    \                /::\    \                /::\    \                /::\____\                /::\____\        
-       /::::|   |               /::::\    \              /::::\    \               \:::\    \              /:::/    /               /::::|   |        
-      /:::::|   |              /::::::\    \            /::::::\    \               \:::\    \            /:::/    /               /:::::|   |        
-     /::::::|   |             /:::/\:::\    \          /:::/\:::\    \               \:::\    \          /:::/    /               /::::::|   |        
-    /:::/|::|   |            /:::/__\:::\    \        /:::/  \:::\    \               \:::\    \        /:::/    /               /:::/|::|   |        
-   /:::/ |::|   |           /::::\   \:::\    \      /:::/    \:::\    \              /::::\    \      /:::/    /               /:::/ |::|   |        
-  /:::/  |::|___|______    /::::::\   \:::\    \    /:::/    / \:::\    \    ____    /::::::\    \    /:::/    /      _____    /:::/  |::|___|______  
- /:::/   |::::::::\    \  /:::/\:::\   \:::\    \  /:::/    /   \:::\ ___\  /\   \  /:::/\:::\    \  /:::/____/      /\    \  /:::/   |::::::::\    \ 
-/:::/    |:::::::::\____\/:::/__\:::\   \:::\____\/:::/____/     \:::|    |/::\   \/:::/  \:::\____\|:::|    /      /::\____\/:::/    |:::::::::\____\
-\::/    / ~~~~~/:::/    /\:::\   \:::\   \::/    /\:::\    \     /:::|____|\:::\  /:::/    \::/    /|:::|____\     /:::/    /\::/    / ~~~~~/:::/    /
- \/____/      /:::/    /  \:::\   \:::\   \/____/  \:::\    \   /:::/    /  \:::\/:::/    / \/____/  \:::\    \   /:::/    /  \/____/      /:::/    / 
-             /:::/    /    \:::\   \:::\    \       \:::\    \ /:::/    /    \::::::/    /            \:::\    \ /:::/    /               /:::/    /  
-            /:::/    /      \:::\   \:::\____\       \:::\    /:::/    /      \::::/____/              \:::\    /:::/    /               /:::/    /   
-           /:::/    /        \:::\   \::/    /        \:::\  /:::/    /        \:::\    \               \:::\__/:::/    /               /:::/    /    
-          /:::/    /          \:::\   \/____/          \:::\/:::/    /          \:::\    \               \::::::::/    /               /:::/    /     
-         /:::/    /            \:::\    \               \::::::/    /            \:::\    \               \::::::/    /               /:::/    /      
-        /:::/    /              \:::\____\               \::::/    /              \:::\____\               \::::/    /               /:::/    /       
-        \::/    /                \::/    /                \::/____/                \::/    /                \::/____/                \::/    /        
-         \/____/                  \/____/                  ~~                       \/____/                  ~~                       \/____/         
-                                                                                                                                                      
+
+                      ___           ___           ___                       ___           ___     
+                     /\__\         /\  \         /\  \          ___        /\__\         /\__\    
+                    /::|  |       /::\  \       /::\  \        /\  \      /:/  /        /::|  |   
+                   /:|:|  |      /:/\:\  \     /:/\:\  \       \:\  \    /:/  /        /:|:|  |   
+                  /:/|:|__|__   /::\~\:\  \   /:/  \:\__\      /::\__\  /:/  /  ___   /:/|:|__|__ 
+                 /:/ |::::\__\ /:/\:\ \:\__\ /:/__/ \:|__|  __/:/\/__/ /:/__/  /\__\ /:/ |::::\__\
+                 \/__/~~/:/  / \:\~\:\ \/__/ \:\  \ /:/  / /\/:/  /    \:\  \ /:/  / \/__/~~/:/  /
+                       /:/  /   \:\ \:\__\    \:\  /:/  /  \::/__/      \:\  /:/  /        /:/  / 
+                      /:/  /     \:\ \/__/     \:\/:/  /    \:\__\       \:\/:/  /        /:/  /  
+                     /:/  /       \:\__\        \::/__/      \/__/        \::/  /        /:/  /   
+                     \/__/         \/__/         ~~                        \/__/         \/__/    
+
+
 ```
 ---
 ##### Table of Contents  
@@ -71,7 +64,7 @@ The purpose of this project is to reverse engineer a full-stack web application 
 This section describes the planning process and planning designs of how our web application.
 
 ### User Flow and Database Relationship
-The picture below describes loosely how the user flow would be established.  This is not exact how the finally product is represented, but the planning phase of this project allowed us to plan ahead of and establish goals of our web application. The everday lay-user will start on the home page, which is the index page of the articles that the lay-user can browse and select an article to read.  Lay-user can read articles, but will not be able to create or comment on articles unless they register as a user.  Once logged-in, users can like, comment and review articles that they read.  User can also edit and delete their own 
+The picture below describes loosely how the user flow would be established.  This is not exact how the finally product is represented, but the planning phase of this project allowed us to plan ahead of and establish goals of our web application. The everday lay-user will start on the home page, which is the index page of the articles that the lay-user can browse and select an article to read.  Lay-user can read articles, but will not be able to create or comment on articles unless they register as a user.  Once logged-in, users can like, comment and review articles that they read.  User can also edit and delete their own articles and comments.
 
 ![Screen Shot 2022-09-04 at 1 19 29 PM](https://user-images.githubusercontent.com/107007458/188325612-f557197b-59b2-4227-a665-28c6648c8b0e.png)
 
@@ -158,13 +151,15 @@ router.get('/:id', async (req ,res, next) => {
     };
 });
 ```
-The Start Reading button will pick an article at random and allow any user or non-user to immediately start reading. Great for those who are not picky and just want some good content.  (-Corey Lott)
+The Start Reading button will pick an article at random and allow any user or non-user to immediately start reading. Great for those who are not picky and just want some good content.  (-Corey Lott)\
+\
 Index Page: 
 ```javascript
 <div class="btn btn-regualar"><a class="reading-start" href="/<%= articles[Math.floor(Math.random() * articles.length)]._id%>">Start Reading</a></div>
 ```
 
-Displaying the index page with all of the articles with the neccessary information to draw readers in was challenging. A forEach method containing the EJA elements were used to display the proper information for readers.  (-Nsikak Udoh)
+Displaying the index page with all of the articles with the neccessary information to draw readers in was challenging. A forEach method containing the EJA elements were used to display the proper information for readers.  (-Nsikak Udoh)\
+\
 Index Page:
 ```javascript 
 <section class="container">
@@ -220,5 +215,6 @@ nsikak@sparknerds.io
 ### Corey Lott
 * Front-End Development and some Back-End Development
 
+---
 ## Thank you all GA instructors, GA fellows and friends for your help, advice and directions in this project!!
 
