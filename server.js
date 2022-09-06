@@ -17,10 +17,7 @@ const port = 8080;
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(methodOverride('_method'));
-<<<<<<< HEAD
 
-=======
->>>>>>> f2477afb63ea4ea2cf47f16be3eb41b55e5af5ba
 app.use(
     session({
         store: MongoStore.create({ mongoUrl: process.env.MONGODB_URL }),
