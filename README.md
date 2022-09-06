@@ -9,7 +9,7 @@
 6. [Tech Stack](#techstack) 
 7. [Coding Challenges](#codingchallenges)
 
----
+---                                   
 ### [Website Link](https://ga725-project2-medium.herokuapp.com/)<a name="websitelink"></a>
 ---
 
