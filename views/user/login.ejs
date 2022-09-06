@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<%- include('../partials/head') %>
+
+<body>
+    <%- include('../partials/new-navbar', {user: user, username: username}) %>
+
+
+  <div class="login-welcome">
+    <h1>Welcome Back!!!</h1>
+  </div>
+  
+  <div class="login-container">
+    <!-- sidebar -->
+    <div class="login-sidebar">
+      <div class="logoPic"><img src="data:image/png;base64,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"></div>
+    </div>
+    <!-- registration container -->
+    <div class="login">
+      <h1>LOGIN</h1>
+      <!-- START FORM -->
+      <form action="/user/login" method="POST">
+        <!-- fieldset for account info -->
+        <fieldset class="account-info">
+          <!-- legend for account info -->
+          <legend>ACCOUNT INFORMATION</legend>
+            <!-- email -->
+            <label class="login-label" for="email">E-MAIL</label>
+            <input class="login-input" name="email" type="email"/>
+            <!-- password -->
+            <label class="login-label" for="password">PASSWORD</label>
+            <input class="login-input" name="password" type="password"/>
+        </fieldset>
+        <!-- submit button -->
+        <input class="login-button" type="submit" value="LOGIN">
+      </form>
+    </div>
+  </div>
+</body>
+</html>

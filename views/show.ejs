@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Global website information -->
+
+<%- include('partials/show-head') %>
+
+<body>
+    <!-- Global Nav Bar -->
+    <%- include('./partials/new-navbar', {user: user, username: username, articles: articles}) %>
+    
+    <main class="container mainContent">
+        <section class="contentArea">
+            <div class="postHeader"> 
+                <div class="postMeta">
+                    
+                    <!-- Show page global header starts -->
+
+                    <div class="authorBox">
+                        <div class="authorImage"><img src="<%=articles.image%>" alt=""></div>
+                        <div class="ahuthorData"><small>Author: <%=articles.author %> </small> <br>
+                            <small>Date: <%= articles.publishDate %> </small>    
+                        </div>
+                    </div>
+
+                    <!-- Show page global header ends -->
+                    
+                    <!-- Social Share icon starts-->
+
+                    <div class="socialShare"> 
+                        <ul class="socialShareList">
+                            <li><a href="https://www.facebook.com"target="_blank" class="fa fa-facebook"></a></li>
+                            <li><a href="https://www.twitter.com" target="_blank" class="fa fa-twitter"></a></li>
+                            <li><a href="https://www.linkedin.com" target="_blank" class="fa-brands fa-linkedin-in"></a></li>
+                            <li><a href="https://www.instagram.com" target="_blank" class="fab fa-instagram"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Social Share icons ends -->
+
+                <!-- Article starts -->
+
+                <article>
+                
+                    <h2 class="title"><%=articles.title %> </h2>
+                    <div class="postContent"> 
+                     <div class="featuredImage"> 
+                         <img src="<%=articles.image%>" style="max-width: 500px;">
+                     </div>
+                     <div class="articles"><%= articles.text%>
+                    </div>
+                 </article>
+
+                 <!-- Article ends -->
+
+
+        <!-- ! New Comment Section Area -->
+        <%- include('./partials/commentsection') %>
+        <%if(typeof user !== 'undefined' && articles.user.toString() === user.id) { %>
+            <%- include('./partials/editdelete') %>
+        <% }%>
+    </main>
+</body>
+</html>

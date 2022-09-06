@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include('../partials/head') %> 
+
+<body>
+
+    <%- include("../partials/new-navbar", {user: user, username: username})%>
+
+    <div class="comment-rating">
+        <h2>Rating: <%=reviews.rating %> </h2>
+    </div>
+
+    <div class="comment-content">
+        <h2>Comment:</h2>
+        <p>Comment: <%=reviews.content %> </p>
+    </div>
+
+    <div>
+        <a class="button" id="edit-button" href="/reviews/<%=reviews._id%>/edit " >Edit Comment</a>
+    </div>
+
+    <div class="delete-review-container">
+
+            <form action="/reviews/<%=reviews._id%>?_method=DELETE" method="POST">
+                <input class='button is-danger' type="submit" value="Delete Review"/>
+            </form>
+        
+    </div>
+
+</body>
+</html>
