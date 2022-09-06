@@ -27,18 +27,19 @@ The purpose of this project is to reverse engineer a full-stack web application 
 6. Express app that renders HTML pages from EJS templates.
 7. RESTful Routes designed with REST convention.
 8. Use EJS to render objects from MongoDB.
-9. Design and demonstrate dastabase document relationship(s) (one-to-many or many-to-many).
+9. Design and demonstrate database document relationship(s) (one-to-many or many-to-many).
 10. Style design with CSS flexbox, grid, bootstrap or other CSS framework.
 11. Deploy on Heroku.
 
 ### Stretch Goals:
-1. Establish User Authentication (user login/logout and registeration).
+1. Establish User Authentication (user login/logout and registration).
 2. Allow users to have an avatar profile picture.
-3. Create user privelges (i.e. edit, delete posts, comment and review article).
+3. Create user privileges (i.e. edit, delete posts, comment, review article and user related posts).
 4. Establish an embedded model to measure likes on an article.
 5. Measure article read time using a functional algorithm.
 6. Create a home "Start Reading" button to allow a user to read a random article from the database.
 7. Create a "Our Story" route to github repository.
+8. Use media queries to ensure pages render nicely in different screen sizes.
 
 
 ## Wireframe:<a name="wireframe"></a>
@@ -53,6 +54,11 @@ The picture below describes loosely how the user flow would be established.  Thi
 Describe the design of different route pages.
 Include picture of wireframes below.
 
+![Home_page](https://user-images.githubusercontent.com/107007458/188521457-04f52618-d641-4420-9e4d-9f46d6cc8166.jpeg)
+
+![User_post_-_Stretch_goals](https://user-images.githubusercontent.com/107007458/188521540-dd211491-29a0-4022-8037-31e74fb91e80.png)
+
+
 ## Example Site Pictures:<a name="examplepictures"></a>
 We will get pictures of the finished website and display here
 
@@ -63,7 +69,7 @@ We will get pictures of the finished website and display here
 HTML was used to structure and organize the containers, elements, forms, buttons and other tags on EJS files.  Partials were also made to simplify web page elements (i.e. navbar) and grant access to user privileges (i.e. comment section).
 
 ### JavaScript
-JavaScript was used on EJS files to give funtionality on the index and show pages by displaying articles and comments.  It also gave functionality to our user stories like the random "Start Reading" button and the read time algorithm.
+JavaScript was used on EJS files to give functionality on the index and show pages by displaying articles and comments.  It also gave functionality to our user stories like the random "Start Reading" button and the read time algorithm.
 
 ### Node.js and Express
 Node.js was used as the back-end environment while Express was the framework to build our web application.
@@ -73,7 +79,6 @@ MongoDB was used as our NoSQL database and database storage.  Mongoose served to
 
 ### Postman
 Postman was used as a tool to make sure establish routes were functioning properly and that database documents were correctly relating to other database documents.
-
 
 
 ## Coding Challenges:<a name="codingchallenges"></a>
@@ -123,7 +128,7 @@ router.get('/:id', async (req ,res, next) => {
     };
 });
 ```
-Index Page: The Start Reading button will pick an Article at random and allow any user or non-user to immediately start reading. Great for those who are not picky and just want some good content.
+Index Page: The Start Reading button will pick an article at random and allow any user or non-user to immediately start reading. Great for those who are not picky and just want some good content.
 ```javascript
 <div class="btn btn-regualar"><a class="reading-start" href="/<%= articles[Math.floor(Math.random() * articles.length)]._id%>">Start Reading</a></div>
 ```
@@ -139,22 +144,26 @@ place code in here
 * Importing a picture from a local machine storage would be a better user experience or story if the user's desired picture was not readily available online.  This could be added on the article create route form.
 * Adding the user's other social media on the blog post would be easily achieve in modifying the user's schema to accept a URL link of their socia media accounts (i.e. Linkedin, Twitter, Facebook).
 * Allowing for sub-comments on the comment section for the author or other users to dialog with each other would increase interactivity.  This would require an embedded property for reviews schema that would take multiple comments.
+* Resize article images to fixed height and width.
+* Complete the stretch goal of making all pages responsive using media query.
+* Refactor code to be dry.
 
 
 
 ## Support:
 Please contact one of the following emails below for questions on support:  
 imcbee@terpmail.umd.edu\
-next email\
-next email\
+Lottc0527@gmail.com\
+nsikak@sparknerds.io\
 
 ## Contributions:
 ### Ian McBee
-* Backend Development and Front-End Development
+* Backend Development Lead and Front-End Development
 
 ### Nsikak Udoh
+* Front-End Development, Design Lead and some Back-End Development
 
 ### Corey Lott
-* Backend and Front-End Development
+* Front-End Development and some Back-End Development
 
 Thank you all GA instructors, GA fellows and friends for your help, advice and directions in this project!!
