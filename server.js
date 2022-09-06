@@ -5,6 +5,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 require('dotenv').config();
 const navLinks = require('./navLinks');
+const db = require('./models');
 
 // Controller Imports
 const {articles, reviews, user} = require('./controllers');
@@ -43,8 +44,10 @@ app.use('/reviews', reviews);
 app.use('/user', user);
 
 // 404 Route
-app.get('*', (req, res) => {
-    res.render('404.ejs')
+app.get('*', async (req, res, next) => {
+    const userSession = await db.User.find(req.session.currentUser);
+    const context = {username: userSession}
+    res.render('404.ejs', context)
 });
 
 // SERVER
